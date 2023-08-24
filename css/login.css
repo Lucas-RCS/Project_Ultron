@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
+
+:root {
+  --red: #D11C08;
+  --reddark: #520B03;
+  --redlight: #EB503F;
+  --redplusdark: #66160B;
+  --black: #141415;
+  --white: #f8f9fc;
+  --gray: #616161;
+  --graydark:#3a3a3a;
+  --yellow: #ddcb26;
+
+}
+
+body,
+html {
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: var(--redplusdark);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+#particles-js {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.content{
+  display: flex;
+  position: absolute;
+  width: 100dvw;
+  height: 100dvh;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.container {
+  display: flex;
+  margin: 0;
+  top: 50px;
+  left: 50%;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  background-color: var(--black);
+  border-radius: 9px;
+  border-top: 10px solid var(--redlight);
+  border-bottom: 10px solid var(--redlight);
+  width: 400px;
+  height: 500px;
+  box-shadow: 1px 1px 108.8px 19.2px var(--reddark);
+}
+
+.box h4 {
+  font-family: "Source Sans Pro", sans-serif;
+  color: var(--red);
+  font-size: 18px;
+  margin-top: 94px;
+}
+
+.box h4 span {
+  color: var(--white);
+  font-weight: lighter;
+}
+
+.box h5 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  color: var(--gray);
+  letter-spacing: 1.5px;
+  margin-top: -15px;
+  margin-bottom: 70px;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+  display: block;
+  margin: 20px auto;
+  background: var(--red);
+  border: 0;
+  border-radius: 5px;
+  padding: 14px 10px;
+  width: 320px;
+  font-weight: bold;
+  outline: none;
+  color: var(--white);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.3s ease;
+}
+
+::-webkit-input-placeholder {
+  color: var(--reddark);
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+  border: 1px solid var(--red);
+}
+
+a {
+  color: var(--white);
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--red);
+  font-weight: bold;
+}
+
+label input[type="checkbox"] {
+  display: none;
+  /* hide the default checkbox */
+}
+
+/* style the artificial checkbox */
+label span {
+  height: 13px;
+  width: 13px;
+  border: 2px solid var(--reddark);
+  border-radius: 2px;
+  display: inline;
+  position: relative;
+  cursor: pointer;
+  float: left;
+  left: 7.5%;
+}
+
+.btn1 {
+  border: 0;
+  background: var(--graydark);
+  color: #eedede;
+  border-radius: 100px;
+  width: 340px;
+  height: 49px;
+  font-size: 16px;
+  position: absolute;
+  top: 79%;
+  left: 8%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn1:hover {
+  background: var(--reddark);
+}
+
+.rmb {
+  position: absolute;
+  margin-left: -30%;
+  margin-top: 0px;
+  color: #eedede;
+  font-size: 13px;
+}
+
+.forgetpass {
+  position: relative;
+  float: right;
+  right: 28px;
+}
+
+.dnthave {
+  position: absolute;
+  top: 92%;
+  left: 24%;
+}
+
+[type="checkbox"]:checked+span:before {
+  /* <-- style its checked state */
+  font-family: FontAwesome;
+  font-size: 16px;
+  content: "\f00c";
+  position: absolute;
+  top: -4px;
+  color: var(--red);
+  left: -1px;
+  width: 13px;
+}
+
+.typcn {
+  position: absolute;
+  left: 339px;
+  top: 282px;
+  color: var(--redlight);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.typcn.active {
+  color: var(--redlight);
+}
+
+.error {
+  background: var(--yellow);
+  text-align: center;
+  width: 337px;
+  height: 20px;
+  padding: 2px;
+  border: 0;
+  border-radius: 5px;
+  margin: 10px auto 10px;
+  position: absolute;
+  top: 31%;
+  left: 7.2%;
+  color: var(--black);
+  font-weight: bold;
+  display: none;
+
+}
+
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  top: 350px;
+  width: 100%;
+  color: var(--gray);
+  font-size: 14px;
+  text-align: center;
+}
+
+.footer .fa {
+  color: var(--red);
+}
