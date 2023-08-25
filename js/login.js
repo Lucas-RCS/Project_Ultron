@@ -4,9 +4,10 @@ var eye = document.getElementById("eye");
 eye.addEventListener("click", togglePass);
 
 function togglePass() {
+  console.log("TESTE");
   eye.classList.toggle("active");
 
-  pwd.type == "password" ? (pwd.type = "text") : (pwd.type = "password");
+  pwd.type === "password" ? (pwd.type = "text") : (pwd.type = "password");
 }
 
 // Form Validation
@@ -16,7 +17,7 @@ function checkStuff() {
   var password = document.form1.password;
   var msg = document.getElementById("msg");
 
-  if (email.value == "") {
+  if (email.value === "") {
     msg.style.display = "block";
     msg.innerHTML = "Insira seu Email";
     email.focus();
@@ -25,22 +26,28 @@ function checkStuff() {
     msg.innerHTML = "";
   }
 
-  if (password.value == "") {
+  if (password.value === "") {
+    msg.style.display = "block";
     msg.innerHTML = "Insira sua Senha";
     password.focus();
     return false;
   } else {
     msg.innerHTML = "";
   }
+
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (!re.test(email.value)) {
-    msg.innerHTML = "Insira um Email valido";
+    msg.style.display = "block";
+    msg.innerHTML = "Insira um Email válido";
     email.focus();
     return false;
   } else {
     msg.innerHTML = "";
   }
+
+  return true;
 }
+
 particlesJS("particles-js", {
   "particles": {
     "number": {
