@@ -51,4 +51,3 @@ for (let i = 1; i < n; i++) {
 }
 
     // document.getElementById("content").innerHTML = html;;
-

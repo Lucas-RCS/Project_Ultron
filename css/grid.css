@@ -1,3 +1,5 @@
+@import url("../css/colors.css");
+
 .hex {
     float: left;
     margin-right: -26px;
@@ -49,8 +51,37 @@
 
 
 /* --------------------------------------------- */
+* {
+    text-decoration: none;
+}
+
+.ph-duotone {
+    display: inline-block;
+    color: var(--red);
+    font-size: 30px;
+    animation: spin 3s linear infinite;
+    will-change: transform, opacity;
+    transition: all 0.3s ease-in-out;
+}
+.ph-duotone:hover {
+    color: var(--redLdark);
+}
+
+@keyframes spin {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+
+
 body {
     position: relative;
+    overflow: hidden !important;
 }
 
 body:before {
@@ -82,7 +113,7 @@ body.show-sidebar:before {
 
 aside,
 main {
-    height: 100vh;
+    height: 100dvh;
     min-height: 580px;
 }
 
@@ -142,7 +173,7 @@ aside .side-inner .share {
 }
 
 aside .side-inner .share h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 30px;
 }
@@ -151,56 +182,4 @@ aside .side-inner .share p {
     color: #fff;
     line-height: 1.8;
     margin-bottom: 30px;
-}
-
-aside .side-inner .share form .form-control {
-    background: none;
-    border-radius: 0;
-    height: 56px;
-    margin-bottom: 20px;
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-aside .side-inner .share form .form-control:active,
-aside .side-inner .share form .form-control:focus {
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border-color: #fff;
-}
-
-aside .side-inner .share form .form-control::-webkit-input-placeholder {
-    /* Edge */
-    color: #fff;
-}
-
-aside .side-inner .share form .form-control:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #fff;
-}
-
-aside .side-inner .share form .form-control::-ms-input-placeholder {
-    color: #fff;
-}
-
-aside .side-inner .share form .form-control::placeholder {
-    color: #fff;
-}
-
-aside .side-inner .share form textarea {
-    height: auto !important;
-}
-
-aside .side-inner .share form .btn {
-    border-color: transparent;
-    height: 56px;
-    border-radius: 0;
-    display: block;
-    background: #fff;
-    color: #000;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: .2rem;
 }

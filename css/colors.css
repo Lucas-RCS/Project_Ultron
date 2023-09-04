@@ -1,0 +1,40 @@
+
+:root {
+    --red: #cc0000;
+    --redLdark: #a60000;
+    --reddark: #540b03;
+    --redlight: #eb4e3d;
+    --redplusdark: #66160b;
+    --redopacity: #d41c0880;
+    --black: #141415;
+    --white: #f8f9fc;
+    --gray: #616161;
+    --graydark: #3a3a3a;
+    --yellow: #ddcb26;
+  
+    /* switch */
+    --switch-width: 46px;
+    --switch-height: 24px;
+    --switch-checked-bg: var(--red);
+    --switch-offset: calc((var(--switch-height) - var(--circle-diameter)) / 2);
+    --switch-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+    /* circle */
+    --circle-diameter: 18px;
+    --circle-bg: #fff;
+    --circle-shadow: 1px 1px 2px rgba(146, 146, 146, 0.45);
+    --circle-checked-shadow: -1px 1px 2px rgba(163, 163, 163, 0.45);
+    --circle-transition: var(--switch-transition);
+    /* icon */
+    --icon-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+    --icon-cross-color: var(--gray);
+    --icon-cross-size: 6px;
+    --icon-checkmark-color: var(--switch-checked-bg);
+    --icon-checkmark-size: 10px;
+    /* effect line */
+    --effect-width: calc(var(--circle-diameter) / 2);
+    --effect-height: calc(var(--effect-width) / 2 - 1px);
+    --effect-bg: var(--circle-bg);
+    --effect-border-radius: 1px;
+    --effect-transition: all .2s ease-in-out;
+  }
+  
