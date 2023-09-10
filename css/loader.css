@@ -1,0 +1,48 @@
+@import url("../css/colors.css");
+
+body {
+    background-color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    height: 20%;
+}
+.loader {
+    width: 60%;
+    height: 10px;
+    border-radius: 2px;
+    background-color: var(--darkred);
+    position: absolute;
+    margin-top: 18%;
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    background-color: var(--red);
+    width: 0%;
+    height: 100%;
+    border-radius: 2px;
+    animation: load 3s ease-in-out infinite;
+    box-shadow: var(--red) 0px 2px 29px 0px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15%;
+}
+
+@keyframes load {
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        right: 0;
+        left: unset;
+    }
+}

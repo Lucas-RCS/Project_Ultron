@@ -1,4 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
 @import url("../css/colors.css");
+
+* ::-webkit-scrollbar {
+    width: 11px;
+}
+* ::-webkit-scrollbar-track {
+    background: var(--redplusdark);
+}
+* ::-webkit-scrollbar-thumb {
+    background: var(--black);
+    border-radius: 20px;
+    transition: all 1s ease-in-out;
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--reddark);
+}
 
 .hex {
     float: left;
@@ -55,49 +71,13 @@
     text-decoration: none;
 }
 
-.ph-duotone {
-    display: inline-block;
-    color: var(--red);
-    font-size: 30px;
-    animation: spin 3s linear infinite;
-    will-change: transform, opacity;
-    transition: all 0.3s ease-in-out;
-}
-.ph-duotone:hover {
-    color: var(--redLdark);
-}
-
-@keyframes spin {
-    0% {
-        transform: scale(1) rotate(0deg);
-    }
-
-    100% {
-        transform: scale(1) rotate(360deg);
-    }
-}
-
-
-
 body {
     position: relative;
     overflow: hidden !important;
-}
+    font-family: "Source Sans Pro", sans-serif !important;
+    background-color: #141415;
+    overflow: unset;
 
-body:before {
-    position: absolute;
-    content: "";
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: .3s all ease-in-out;
-    -o-transition: .3s all ease-in-out;
-    transition: .3s all ease-in-out;
 }
 
 body.show-sidebar {
@@ -110,6 +90,66 @@ body.show-sidebar:before {
 }
 
 /* SIDEBAR */
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 12px;
+    background-color: var(--white);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 50%;
+}
+
+.menu:hover {
+    background-color: var(--white2);
+}
+
+.ph-duotone {
+    display: inline-block;
+    color: var(--redlight);
+    font-size: 30px;
+    will-change: transform, opacity;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+}
+
+.ph-duotone:hover {
+    color: var(--red);
+    animation: pulse 0.3s linear;
+    will-change: transform, opacity;
+}
+
+@keyframes spin {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(20deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
+
 
 aside,
 main {
@@ -118,15 +158,17 @@ main {
 }
 
 aside {
-    width: 380px;
+    width: 280px;
     right: 0;
-    z-index: 1001;
+    top: 0;
+    z-index: 999;
     position: fixed;
     -webkit-transform: translateX(100%);
     -ms-transform: translateX(100%);
     transform: translateX(100%);
-    color: #fff;
-    background-color: #464159;
+    color: var(--white);
+    text-align: center;
+    background-color: var(--redplusdark);
     -webkit-transition: 1s -webkit-transform cubic-bezier(0.23, 1, 0.32, 1);
     transition: 1s -webkit-transform cubic-bezier(0.23, 1, 0.32, 1);
     -o-transition: 1s transform cubic-bezier(0.23, 1, 0.32, 1);
@@ -142,7 +184,7 @@ aside {
 
 aside .toggle {
     padding-right: 30px;
-    padding-top: 30px;
+    padding-top: 100%;
     position: absolute;
     left: 0;
     -webkit-transform: translateX(-100%);
@@ -157,19 +199,22 @@ aside .toggle {
 }
 
 .show-sidebar aside {
-    -webkit-box-shadow: -10px 0 30px 0 rgba(0, 0, 0, 0.5);
-    box-shadow: -10px 0 30px 0 rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: -10px 0 25px 0 var(--blackopacity);
+    box-shadow: -10px 0 25px 0 var(--blackopacity);
 }
 
 aside .side-inner {
-    padding: 20px 0;
-    height: 100vh;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+    padding: 10px 0;
+    height: 100dvh;
+    overflow-y: auto;
 }
 
 aside .side-inner .share {
-    padding: 50px;
+    margin-top: 10px;
+}
+
+aside .side-inner .share {
+    padding: 5px;
 }
 
 aside .side-inner .share h2 {
@@ -182,4 +227,98 @@ aside .side-inner .share p {
     color: #fff;
     line-height: 1.8;
     margin-bottom: 30px;
+}
+
+aside .side-inner .share img {
+    width: 50%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+
+/* Form Input Seach */
+
+.seach {
+    display: flex;
+    justify-content: center;
+}
+
+.InputContainer {
+    height: 40px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--black);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px var(--blackopacity);
+    padding-left: 20px;
+}
+
+.input {
+    width: 200px;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.9em;
+    caret-color: var(--red);
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.labelforsearch {
+    cursor: pointer;
+    padding: 0px 12px;
+}
+
+.searchIcon {
+    width: 13px;
+}
+
+.searchIcon path {
+    fill: var(--graylight);
+    transition: fill 0.3s ease;
+}
+
+.searchIcon:hover path {
+    fill: var(--red);
+}
+
+
+/* Title */
+
+.Title_per {
+    font-size: .7rem;
+    font-weight: 700;
+    justify-content: start;
+    color: var(--white);
+}
+
+/* IMGS */
+#image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.person img {
+    max-width: 80px;
+    margin: 10px;
+}
+
+#image-upload {
+    display: none;
+}
+
+.btnImg {
+    width: 20%;
+    padding: 10px;
+    margin-top: 10%;
+    border: 0;
+    border-radius: 12px;
+    background-color: var(--white);
+    transition: all 0.3s ease-in-out;
 }

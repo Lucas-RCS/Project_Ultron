@@ -37,16 +37,11 @@ html {
   box-shadow: 1px 1px 108.8px 19.2px var(--reddark);
 }
 
-.box h4 {
-  font-family: "Source Sans Pro", sans-serif;
-  color: var(--red);
-  font-size: 18px;
-  margin-top: 94px;
-}
-
-.box h4 span {
-  color: var(--white);
-  font-weight: lighter;
+.imgLogo{
+  width: 100%;
+  height: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .box h5 {
@@ -55,7 +50,7 @@ html {
   color: var(--gray);
   letter-spacing: 1.5px;
   margin-top: -15px;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 .box input[type="text"],
@@ -228,7 +223,7 @@ a:hover {
   height: 49px;
   font-size: 16px;
   position: absolute;
-  top: 79%;
+  top: 85%;
   left: 8%;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -293,7 +288,7 @@ a:hover {
   border-radius: 5px;
   margin: 10px auto 10px;
   position: absolute;
-  top: 31%;
+  top: 40%;
   left: 7.2%;
   color: var(--black);
   font-weight: bold;

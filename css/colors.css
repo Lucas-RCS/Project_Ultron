@@ -1,16 +1,20 @@
 
 :root {
-    --red: #cc0000;
-    --redLdark: #a60000;
-    --reddark: #540b03;
-    --redlight: #eb4e3d;
-    --redplusdark: #66160b;
-    --redopacity: #d41c0880;
-    --black: #141415;
-    --white: #f8f9fc;
-    --gray: #616161;
-    --graydark: #3a3a3a;
-    --yellow: #ddcb26;
+    --red: rgb(204, 0, 0);
+    --redLdark: rgb(166, 0, 0);
+    --reddark: rgb(84, 11, 3);
+    --redlight: rgb(235, 78, 61);
+    --redplusdark: rgb(102, 22, 11);
+    --redopacity: rgba(212, 28, 8, 0.5);
+    --darkred: rgb(47, 5, 0);
+    --black: rgb(20, 20, 21);
+    --blackopacity: rgba(20, 20, 21, 0.5);
+    --white: rgb(248, 249, 252);
+    --white2: rgb(231, 231, 231); 
+    --gray: rgb(97, 97, 97);
+    --graydark: rgb(58, 58, 58);
+    --graylight: rgb(163, 163, 163);
+    --yellow: rgb(221, 203, 38);
   
     /* switch */
     --switch-width: 46px;

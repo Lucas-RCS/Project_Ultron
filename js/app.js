@@ -35,6 +35,8 @@ for (let i = 1; i < n; i++) {
         let middle = document.createElement("div");
         middle.classList = "middle";
 
+        middle.innerHTML = `${i}-${e}`;
+
         let right = document.createElement("div");
         right.classList = "right";
 
