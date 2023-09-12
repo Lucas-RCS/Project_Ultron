@@ -37,6 +37,8 @@ $(function () {
 
 
 });
+
+// COLOCAR IMAGEM NA PÁGINA
 const imageContainer = document.getElementById('image-container');
 const imageUpload = document.getElementById('image-upload');
 const addButton = document.getElementById('add-image');

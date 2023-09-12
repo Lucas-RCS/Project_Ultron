@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
+@import url("../css/colors.css");
+
+* ::-webkit-scrollbar {
+    width: 11px;
+}
+
+* ::-webkit-scrollbar-track {
+    background: var(--redplusdark);
+}
+
+* ::-webkit-scrollbar-thumb {
+    background: var(--black);
+    border-radius: 20px;
+    transition: all 1s ease-in-out;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--reddark);
+}
+
+.hex {
+    float: left;
+    margin-right: -26px;
+    margin-bottom: -50px;
+}
+
+.on .left {
+    border-right: 30px solid #ce0000 !important;
+}
+
+.on .middle {
+    background: #ce0000 !important;
+}
+
+.on .right {
+    border-left: 30px solid #ce0000 !important;
+}
+
+.hex .left {
+    float: left;
+    width: 0;
+    border-right: 30px solid #6C6;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+
+.hex .middle {
+    float: left;
+    width: 60px;
+    height: 104px;
+    background: #6C6;
+}
+
+.hex .right {
+    float: left;
+    width: 0;
+    border-left: 30px solid #6C6;
+    border-top: 52px solid transparent;
+    border-bottom: 52px solid transparent;
+}
+
+.hex-row {
+    clear: left;
+}
+
+.hex.even {
+    margin-top: 53px;
+}
+
+
+/* --------------------------------------------- */
+* {
+    text-decoration: none;
+}
+
+body {
+    overflow: hidden !important;
+    font-family: "Source Sans Pro", sans-serif !important;
+    background-color: var(--black);
+    overflow: unset;
+}
+
+.container {
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    top: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 65%;
+}
+
+.menu {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--red);
+    border-radius: 30px 30px 10px 10px;
+    background-color: var(--blackopacity2);
+    justify-content: end;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: var(--white);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.icons:hover {
+    background-color: var(--white2);
+}
+
+.ph-duotone {
+    display: inline-block;
+    color: var(--redlight);
+    font-size: 30px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.ph-duotone:hover {
+    color: var(--red);
+}
+.iconPlus {
+    color: var(--white);
+}
+.iconPlus:hover {
+    color: var(--white2);
+}
+
+.iconPlus:active {
+    animation: scale 1s linear;
+    will-change: transform, opacity;
+}
+
+.pulse:hover {
+    animation: pulse 0.3s linear;
+    will-change: transform, opacity;
+}
+
+@keyframes pulse {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(20deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+
+
+}
+
+
+
+/* modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    color: var(--white);
+}
+
+.modal-content {
+    width: 80%;
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 5%;
+    border-radius: 15px;
+    background-color: var(--blackopacity2);
+    border: 2px solid var(--red);
+}
