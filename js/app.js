@@ -68,7 +68,7 @@ openModalIcon.addEventListener('click', function () {
 
     setTimeout(function () {
         svgObject.style.opacity = "0";
-    }, 2000); // 2000ms = 2 seconds
+    }, 2000); // 2000ms = 2 secon
 
     setTimeout(function () {
         svgObject.style.display = "none";
@@ -94,3 +94,26 @@ closeModalIcon.addEventListener('click', function () {
     Btnstart.style.display = "none";
     closeModalIcon.style.display = "none";
 });
+
+
+var menuOptions = document.querySelectorAll(".iconsMenu");
+var mainContent = document.querySelectorAll(".main > div");
+
+function showContent(optionId) {
+    mainContent.forEach(function (content) {
+        content.style.display = "none";
+    });
+    var contentToShow = document.getElementById(optionId + "Content");
+    if (contentToShow) {
+        contentToShow.style.display = "flex";
+    }
+}
+
+menuOptions.forEach(function (option) {
+    option.addEventListener("click", function () {
+        var optionId = this.id;
+        showContent(optionId);
+    });
+});
+
+showContent("option1");

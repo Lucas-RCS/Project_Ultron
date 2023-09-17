@@ -189,6 +189,13 @@ body {
 .menu .main {
     display: flex;
     align-items: center;
+    min-height: 30px;
+}
+.menu .main .optContainer{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 .hexagon {
@@ -210,6 +217,18 @@ body {
 
 .hex2 {
     background-image: url('../img/personagens/kynull.png');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex3 {
+    background-image: url('../img/terrenos/grama.jpg');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex4 {
+    background-image: url('../img/terrenos/lama.jpg');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex5 {
+    background-image: url('../img/terrenos/areia.jpg');
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
