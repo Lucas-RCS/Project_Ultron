@@ -100,7 +100,7 @@ body {
 
 .menu {
     width: 75%;
-    height: 100%;
+    height: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,7 +108,7 @@ body {
     flex-direction: column;
 }
 
-.menu .main{
+.menu .main {
     width: 100%;
     height: 100%;
     max-height: 90px;
@@ -118,7 +118,8 @@ body {
     background-color: var(--blackopacity2);
     backdrop-filter: blur(5px);
 }
-.menu .footer{
+
+.menu .footer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,11 +161,12 @@ body {
 }
 
 
-.menu .menuOptions{
+.menu .menuOptions {
     width: 20%;
     display: flex;
     justify-content: space-evenly;
 }
+
 .menu .iconsMenu {
     color: var(--white);
 }
@@ -183,7 +185,58 @@ body {
     will-change: transform, opacity;
 }
 
+/* MENU PERSONAGENS */
+.menu .main {
+    display: flex;
+    align-items: center;
+}
 
+.hexagon {
+    width: 55px;
+    height: 65px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+/* PERSONAGENS FIXOS */
+
+.hex1 {
+    background-image: url('../img/personagens/Ashborn.png');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex2 {
+    background-image: url('../img/personagens/Aeris.png');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex3 {
+    background-image: url('../img/personagens/Clive.png');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex4 {
+    background-image: url('../img/personagens/kynull.png');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex5 {
+    background-image: url('../img/personagens/Efeus.png');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex6 {
+    background-image: url('../img/personagens/Brock.png');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex7 {
+    background-image: url('../img/personagens/Celeste.png');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex8 {
+    background-image: url('../img/personagens/Konan.png');
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
 
 /* modal */
 .modal {
@@ -209,10 +262,11 @@ body {
     border: 2px solid var(--red);
 }
 
-.modal-content object{
+.modal-content object {
     width: 100%;
     height: 50%;
 }
+
 
 /* ANIMAÇÕES */
 @keyframes pulse {
