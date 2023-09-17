@@ -52,4 +52,45 @@ for (let i = 1; i < n; i++) {
     html.appendChild(hex_row)
 }
 
-    // document.getElementById("content").innerHTML = html;
+
+const modal = document.getElementById('myModal');
+const openModalIcon = document.getElementById('openModal');
+const closeModalIcon = document.getElementById('closeModal');
+const svgObject = document.getElementById('svgObject');
+const modalContent = document.getElementById('modalContent');
+const svg = document.getElementById('svg');
+const hr = document.getElementById('hr');
+const Btnstart = document.getElementById('Btn');
+
+
+openModalIcon.addEventListener('click', function () {
+    modal.style.display = 'flex';
+
+    setTimeout(function () {
+        svgObject.style.opacity = "0";
+    }, 2000); // 2000ms = 2 seconds
+
+    setTimeout(function () {
+        svgObject.style.display = "none";
+        modalContent.style.display = "block";
+        modalContent.classList.add('fade-in-stagger');
+        svg.style.display = "none";
+        hr.style.display = "block";
+        hr.classList.add('fade-in-stagger');
+        Btnstart.style.display = "block";
+        Btnstart.classList.add('fade-in-stagger');
+        closeModalIcon.style.display = "block";
+        closeModalIcon.classList.add('fade-in-stagger');
+    }, 2200);
+});
+
+closeModalIcon.addEventListener('click', function () {
+    modal.style.display = 'none';
+    svgObject.style.opacity = "1";
+    svgObject.style.display = "block";
+    modalContent.style.display = "none";
+    svg.style.display = "flex";
+    hr.style.display = "none";
+    Btnstart.style.display = "none";
+    closeModalIcon.style.display = "none";
+});

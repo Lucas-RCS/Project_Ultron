@@ -14,12 +14,65 @@
         <!--Menu bar-->
         <div class="container">
             <div class="content">
-                <div class="icons">
+                <div class="icons" id="openModal">
                     <span><i class="ph-duotone ph-sword pulse"></i></span>
+                </div>
+                <div class="modal" id="myModal">
+                    <div class="modal-content">
+                        <span id="closeModal" style="float: right; cursor: pointer; display: none;">
+                            <i class="ph-duotone ph-x-square"></i>
+                        </span>
+                        <div id="svg">
+                            <object data="../img/LogoUltron_black.svg" type="image/svg+xml" id="svgObject"></object>
+                        </div>
+                        <div class="modalContainer" id="modalContent" style="display: none;">
+                            <div class="radio-container">
+                                <div class="radio-wrapper">
+                                    <label class="radio-button">
+                                        <input id="option1" name="radio-group" type="radio" checked>
+                                        <span class="radio-checkmark"></span>
+                                        <span class="radio-label">Amplitude</span>
+                                    </label>
+                                </div>
+                                <div class="radio-wrapper">
+                                    <label class="radio-button">
+                                        <input id="option2" name="radio-group" type="radio">
+                                        <span class="radio-checkmark"></span>
+                                        <span class="radio-label">Profundidade</span>
+                                    </label>
+                                </div>
+                                <div class="radio-wrapper">
+                                    <label class="radio-button">
+                                        <input id="option3" name="radio-group" type="radio">
+                                        <span class="radio-checkmark"></span>
+                                        <span class="radio-label">Profundidade Limitada</span>
+                                    </label>
+                                </div>
+                                <div class="radio-wrapper">
+                                    <label class="radio-button">
+                                        <input id="option3" name="radio-group" type="radio">
+                                        <span class="radio-checkmark"></span>
+                                        <span class="radio-label">Aprofundamento Iterativo</span>
+                                    </label>
+                                </div>
+                                <div class="radio-wrapper">
+                                    <label class="radio-button">
+                                        <input id="option3" name="radio-group" type="radio">
+                                        <span class="radio-checkmark"></span>
+                                        <span class="radio-label">Bidirecional</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr id="hr" style="display: none; width: 90%;">
+                        <div class="btnModal">
+                            <input type="submit" value="Iniciar" class="Btn-start" id="Btn">
+                        </div>
+                    </div>
                 </div>
                 <div class="menu">
                     <div class="main">
-                        <div class="hexagon hex1"></div>
+                        <div class="hexagon hex1 "></div>
                         <div class="hexagon hex2"></div>
                         <div class="hexagon hex3"></div>
                         <div class="hexagon hex4"></div>
@@ -31,18 +84,8 @@
                     <div class="footer">
                         <div class="menuOptions">
                             <span><i class="ph-duotone ph-user-circle-plus iconsMenu " id=""></i></span>
-                            <span><i class="ph-duotone ph-squares-four iconsMenu " id="openModal"></i></span>
+                            <span><i class="ph-duotone ph-squares-four iconsMenu "></i></span>
                             <span><i class="ph-duotone ph-tree-evergreen iconsMenu" id=""></i></span>
-                        </div>
-                    </div>
-                    <div class="modal" id="myModal">
-                        <div class="modal-content">
-                            <span id="closeModal" style="float: right; cursor: pointer;">
-                                <i class="ph-duotone ph-x-square"></i>
-                            </span>
-                            <h2>Este é um Modal Simples</h2>
-                            <p>Este é o conteúdo do modal. Você pode adicionar qualquer coisa aqui.</p>
-                            <object data="../img/LogoUltron_black.svg" type="image/svg+xml"></object>
                         </div>
                     </div>
                 </div>
@@ -51,10 +94,10 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/app.js"></script>
-<script src="../js/modal.js"></script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 </html>
