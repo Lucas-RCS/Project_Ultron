@@ -1,0 +1,58 @@
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Ultron</title>
+  <link id="favicon" rel="shortcut icon" href="./Public/img/LogoUltron_fav.png" type="image/x-icon" />
+  <link rel="stylesheet" href="./Public/css/grid.css">
+</head>
+
+<body>
+  <div>
+    <div id="base">
+    </div>
+
+    <!--Menu bar-->
+    <div class="container">
+      <div class="content">
+        <div class="icons">
+          <span><i class="ph-duotone ph-sword pulse"></i></span>
+        </div>
+        <div class="menu">
+          <div class="main">
+            <img src="./Public/img/cards/5e1eeae8-41e6-42e9-9b0b-e5bf2c79af44.png" id="drag1" draggable="true" ondragstart="drag(event)" alt="Kynull">
+            <img src="./Public/img/cards/201b0d47-3db4-4105-88f6-059093df4433.png" id="drag2" draggable="true" ondragstart="drag(event)" alt="Ashborn">
+          </div>
+          <div class="footer">
+            <div class="menuOptions">
+              <span><i class="ph-duotone ph-user-circle-plus iconsMenu " id=""></i></span>
+              <span><i class="ph-duotone ph-squares-four iconsMenu " id="openModal"></i></span>
+              <span><i class="ph-duotone ph-tree-evergreen iconsMenu" id=""></i></span>
+            </div>
+          </div>
+          <div class="modal" id="myModal">
+            <div class="modal-content">
+              <span id="closeModal" style="float: right; cursor: pointer;">
+                <i class="ph-duotone ph-x-square"></i>
+              </span>
+              <h2>Este é um Modal Simples</h2>
+              <p>Este é o conteúdo do modal. Você pode adicionar qualquer coisa aqui.</p>
+              <object data="./Public/img/LogoUltron_black.svg" type="image/svg+xml"></object>
+            </div>
+          </div>
+        </div>
+        <div class="icons">
+          <span><i class="ph-duotone ph-eraser pulse"></i></span>
+        </div>
+      </div>
+    </div>
+</body>
+
+<script src="./Public/js/jquery-3.3.1.min.js"></script>
+<script src="./Public/js/Grid/Grid.js"></script>
+<script src="./Public/js/App.js"></script>
+<script src="./Public/js/modal.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+</html>

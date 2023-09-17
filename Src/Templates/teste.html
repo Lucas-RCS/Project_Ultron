@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    :root {
+      --width: 60px;
+      --height: 10px;
+
+      --content: calc((var(--width) * 4) * 3.25);
+    }
+
+    body {
+      /* display: flex; */
+      justify-content: space-evenly;
+      align-items: center;
+      overflow: scroll;
+      margin: 0px;
+    }
+
+    #content {
+      display: flex;
+      flex-wrap: wrap;
+      float: left;
+      width: var(--content);
+      height: var(--content);
+      background-color: blue;
+      position: absolute;
+      border: 5px solid green;
+
+      margin-inline: calc(50vw - (var(--content)/2));
+      margin-block: calc(50vh - (var(--content)/2));
+    }
+
+    .cards {
+      width: calc(var(--width) * 4);
+      height: calc(var(--height));
+
+      margin-left: calc(var(--width) * -1);
+      background-color: black;
+    }
+
+    .cards:nth-child(even) {
+      background: red;
+      margin-top: var(--height);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="content" style="">
+
+    <div class="cards" style="margin-left: 0px !important;"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
+
+  </div>
+</body>
+
+</html>
