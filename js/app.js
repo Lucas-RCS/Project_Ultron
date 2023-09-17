@@ -52,4 +52,4 @@ for (let i = 1; i < n; i++) {
     html.appendChild(hex_row)
 }
 
-    // document.getElementById("content").innerHTML = html;;
+    // document.getElementById("content").innerHTML = html;
