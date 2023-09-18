@@ -4,17 +4,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/loader.css')}}">
+  <link rel="stylesheet" href="./Public/css/index.css">
+  <link rel="stylesheet" href="./Public/css/loader.css">
+  <link id="favicon" rel="shortcut icon" href="./Public/img/LogoUltron_fav.png" type="image/x-icon" />
   <title>Project Ultron</title>
 </head>
 
-<body>
-  <div class="container">
-    <div class="logo">
-      <img src="./static/img/LogoUltron_fav.svg" alt="Logo Ultron animado">
+<body id="particles-js">
+  <div class="animated bounceInDown content">
+    <div class="container">
+      <i class="typcn typcn-eye" id="eye"></i>
+      <div class="svg">
+        <object data="./Public/img/LogoUltron_black.svg" type="image/svg+xml" id="svgObject"></object>
+      </div>
     </div>
-    <div class="loader"></div>
+    <div class="footer">
+      <span>Powered by <i class=""></i> <a href="#" style="color: var(--red); font-weight: 700;">Project Ultron</span>
+    </div>
   </div>
+  <script src="./Public/js/particles.js"></script>
+  <script src="./Public/js/login.js"></script>
 </body>
 
 </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./Public/css/loader.css">
+  <link id="favicon" rel="shortcut icon" href="./Public/img/LogoUltron_fav.png" type="image/x-icon" />
+  <title>Project Ultron</title>
+
+</head>
+
+<body id="particles-js">
+  <div class="container">
+    <div class="content">
+      <div class="svg">
+        <object data="./Public/img/LogoUltron_black.svg" type="image/svg+xml" id="svgObject"></object>
+      </div>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <script src="./Public/js/particles.js"></script>
+  <script src="./Public/js/login.js"></script>
+</body>
+
+</html> -->

@@ -10,3 +10,7 @@ def home():
 @Router.route("/grid")
 def grid():
     return render_template('Grid.html') 
+
+@Router.route("/loading")
+def loading():
+    return render_template('animationLoading.html')

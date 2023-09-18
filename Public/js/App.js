@@ -213,3 +213,70 @@ function drag(ev) {
   if (!ev.target.classList.contains("deactive"))
     ev.dataTransfer.setData("card", ev.target.id);
 }
+
+
+
+const modal = document.getElementById('myModal');
+const openModalIcon = document.getElementById('openModal');
+const closeModalIcon = document.getElementById('closeModal');
+const svgObject = document.getElementById('svgObject');
+const modalContent = document.getElementById('modalContent');
+const svg = document.getElementById('svg');
+const hr = document.getElementById('hr');
+const Btnstart = document.getElementById('Btn');
+
+
+openModalIcon.addEventListener('click', function () {
+  modal.style.display = 'flex';
+
+  setTimeout(function () {
+    svgObject.style.opacity = "0";
+  }, 2000); // 2000ms = 2 secon
+
+  setTimeout(function () {
+    svgObject.style.display = "none";
+    modalContent.style.display = "block";
+    modalContent.classList.add('fade-in-stagger');
+    svg.style.display = "none";
+    hr.style.display = "block";
+    hr.classList.add('fade-in-stagger');
+    Btnstart.style.display = "block";
+    Btnstart.classList.add('fade-in-stagger');
+    closeModalIcon.style.display = "block";
+    closeModalIcon.classList.add('fade-in-stagger');
+  }, 2200);
+});
+
+closeModalIcon.addEventListener('click', function () {
+  modal.style.display = 'none';
+  svgObject.style.opacity = "1";
+  svgObject.style.display = "block";
+  modalContent.style.display = "none";
+  svg.style.display = "flex";
+  hr.style.display = "none";
+  Btnstart.style.display = "none";
+  closeModalIcon.style.display = "none";
+});
+
+
+var menuOptions = document.querySelectorAll(".iconsMenu");
+var mainContent = document.querySelectorAll(".main > div");
+
+function showContent(optionId) {
+  mainContent.forEach(function (content) {
+    content.style.display = "none";
+  });
+  var contentToShow = document.getElementById(optionId + "Content");
+  if (contentToShow) {
+    contentToShow.style.display = "flex";
+  }
+}
+
+menuOptions.forEach(function (option) {
+  option.addEventListener("click", function () {
+    var optionId = this.id;
+    showContent(optionId);
+  });
+});
+
+showContent("option1");
