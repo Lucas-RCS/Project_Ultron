@@ -9,6 +9,9 @@ class OctagonalArena {
   #ambient = [];
   #grid = {};
 
+  #card1 = null;
+  #card2 = null;
+
   base_size_w;
   base_size_h;
 
@@ -52,26 +55,102 @@ class OctagonalArena {
   drop(ev) {
     ev.preventDefault();
     const cardId = ev.dataTransfer.getData("card");
-    const card = document.getElementById(cardId);
+    var card = document.getElementById(cardId);
 
     var [x, y] = ev.target.getAttribute("coord").split("-");
 
-    let base_size = SIZE_CONSTANTS * this.#settings.scale;
+    const coord = `${x}-${y}`;
 
-    console.log(this.#grid[x][y].style.top, this.#grid[x][y].style.left);
+    if (this.#grid[x][y].classList.contains("active")) {
+      let base_size = SIZE_CONSTANTS * this.#settings.scale;
 
-    const cardClone = card.cloneNode(true);
-    cardClone.style.top = this.#grid[x][y].style.top;
-    cardClone.style.left = this.#grid[x][y].style.left;
-    cardClone.style.width = base_size * 3;
-    cardClone.style.height = base_size * 3;
+      if (card.getAttribute("state") == 1) {
+        let cardData = [card, coord];
 
-    cardClone.style.paddingTop = this.base_size_h * 0.18;
-    cardClone.style.paddingLeft = this.base_size_w * 0.48;
+        if (this.#card1 == card.getAttribute("coord")) this.#card1 = cardData;
+        else this.#card2 = cardData;
 
-    this.#contentDocumentElement.appendChild(cardClone);
+        card.style.top = this.#grid[x][y].style.top;
+        card.style.left = this.#grid[x][y].style.left;
+      } else {
+        card.setAttribute("state", 1);
+        card.setAttribute("coord", coord);
 
-    card.classList.add("deactve");
+        const cardClone = card.cloneNode(true);
+
+        card.classList.add("deactve");
+
+        cardClone.style.top = this.#grid[x][y].style.top;
+        cardClone.style.left = this.#grid[x][y].style.left;
+        cardClone.style.width = base_size * 3;
+        cardClone.style.height = base_size * 3;
+
+        cardClone.style.paddingTop = this.base_size_h * 0.18;
+        cardClone.style.paddingLeft = this.base_size_w * 0.48;
+
+        this.#contentDocumentElement.appendChild(cardClone);
+
+        this.Card = [cardClone, coord];
+      }
+    } else
+      alert("Não é possível incluir personagens em coordenadas desativadas.");
+  }
+
+  getAmbient() {
+    return this.#ambient.map((coord) => {
+      let [x, y] = coord;
+
+      return `${x}-${y}`;
+    });
+  }
+
+  makePath(paths) {
+    this.#card1[0];
+
+    console.log(paths);
+
+    let i = 0;
+
+    for (const path of paths) {
+      setTimeout(() => {
+        let [x, y] = path.split("-");
+
+        this.#card1[0].style.top = this.#grid[x][y].style.top;
+        this.#card1[0].style.left = this.#grid[x][y].style.left;
+
+        this.#card1[1] = [x, y];
+      }, i * 1150);
+
+      i++;
+    }
+  }
+
+  get Card() {
+    return [this.#card1, this.#card2];
+  }
+
+  set Card(card) {
+    let cardBar = document.getElementById("cardBar");
+
+    if (this.#card1 == null) {
+      this.#card1 = card;
+
+      cardBar.innerHTML += `
+      <div class="cardLine">
+        <img src="./Public/img/coroa.png">
+        <p>${card[0].getAttribute("alt")}</p>
+      </div>
+      `;
+    } else {
+      this.#card2 = card;
+
+      cardBar.innerHTML += `
+      <div class="cardLine">
+        <img src="./Public/img/ciclo.png">
+        <p>${card[0].getAttribute("alt")}</p>
+      </div>
+      `;
+    }
   }
 
   createGrid() {

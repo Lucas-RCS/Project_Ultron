@@ -214,20 +214,76 @@ function drag(ev) {
     ev.dataTransfer.setData("card", ev.target.id);
 }
 
+function construirURLComParametros(url, parametros) {
+  var partes = [];
+  for (var chave in parametros) {
+    if (parametros.hasOwnProperty(chave)) {
+      partes.push(
+        encodeURIComponent(chave) + "=" + encodeURIComponent(parametros[chave])
+      );
+    }
+  }
+  return url + "?" + partes.join("&");
+}
 
+function submit() {
+  let radio;
 
-const modal = document.getElementById('myModal');
-const openModalIcon = document.getElementById('openModal');
-const closeModalIcon = document.getElementById('closeModal');
-const svgObject = document.getElementById('svgObject');
-const modalContent = document.getElementById('modalContent');
-const svg = document.getElementById('svg');
-const hr = document.getElementById('hr');
-const Btnstart = document.getElementById('Btn');
+  els = document.getElementsByName("radio-group");
 
+  for (var i = 0; i < els.length; i++) if (els[i].checked) radio = els[i].value;
 
-openModalIcon.addEventListener('click', function () {
-  modal.style.display = 'flex';
+  const limited_depth = document.getElementById("limited-depth") ?? 1;
+
+  let cards = Arena.Card;
+
+  if (cards[0] == null || cards[1] == null)
+    alert(
+      "Para iniciar o combate, é necessário inserir pelo menos dois cards na arena."
+    );
+  else {
+    var xhr = new XMLHttpRequest();
+
+    // Configura a função de callback para quando a resposta for recebida
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var resposta = JSON.parse(xhr.responseText);
+
+        Arena.makePath(resposta);
+
+        console.log(resposta);
+      }
+    };
+
+    if (radio == "profundidadelimit") radio += "/" + limited_depth;
+
+    // Configura a requisição
+    xhr.open(
+      "GET",
+      construirURLComParametros(`./${radio}`, {
+        ambient: Arena.getAmbient(),
+        beginning: cards[0][1],
+        destination: cards[1][1],
+      }),
+      true
+    );
+
+    // Envia a requisição
+    xhr.send();
+  }
+}
+
+const modal = document.getElementById("myModal");
+const openModalIcon = document.getElementById("openModal");
+const closeModalIcon = document.getElementById("closeModal");
+const svgObject = document.getElementById("svgObject");
+const modalContent = document.getElementById("modalContent");
+const svg = document.getElementById("svg");
+const hr = document.getElementById("hr");
+const Btnstart = document.getElementById("Btn");
+
+openModalIcon.addEventListener("click", function () {
+  modal.style.display = "flex";
 
   setTimeout(function () {
     svgObject.style.opacity = "0";
@@ -236,19 +292,19 @@ openModalIcon.addEventListener('click', function () {
   setTimeout(function () {
     svgObject.style.display = "none";
     modalContent.style.display = "block";
-    modalContent.classList.add('fade-in-stagger');
+    modalContent.classList.add("fade-in-stagger");
     svg.style.display = "none";
     hr.style.display = "block";
-    hr.classList.add('fade-in-stagger');
+    hr.classList.add("fade-in-stagger");
     Btnstart.style.display = "block";
-    Btnstart.classList.add('fade-in-stagger');
+    Btnstart.classList.add("fade-in-stagger");
     closeModalIcon.style.display = "block";
-    closeModalIcon.classList.add('fade-in-stagger');
+    closeModalIcon.classList.add("fade-in-stagger");
   }, 2200);
 });
 
-closeModalIcon.addEventListener('click', function () {
-  modal.style.display = 'none';
+closeModalIcon.addEventListener("click", function () {
+  modal.style.display = "none";
   svgObject.style.opacity = "1";
   svgObject.style.display = "block";
   modalContent.style.display = "none";
@@ -257,7 +313,6 @@ closeModalIcon.addEventListener('click', function () {
   Btnstart.style.display = "none";
   closeModalIcon.style.display = "none";
 });
-
 
 var menuOptions = document.querySelectorAll(".iconsMenu");
 var mainContent = document.querySelectorAll(".main > div");

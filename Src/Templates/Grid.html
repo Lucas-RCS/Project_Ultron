@@ -13,7 +13,11 @@
     <div id="base">
     </div>
 
-    <!--Menu bar-->
+    <!--Cards Bar-->
+    <div id="cardBar">
+    </div>
+
+    <!--Menu Bar-->
     <div class="container">
       <div class="content">
         <div class="icons" id="openModal">
@@ -32,36 +36,36 @@
               <div class="radio-container">
                 <div class="radio-wrapper">
                   <label class="radio-button">
-                    <input id="option1" name="radio-group" type="radio" checked>
+                    <input id="option1" name="radio-group" type="radio" value="amplitude" checked>
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">Amplitude</span>
                   </label>
                 </div>
                 <div class="radio-wrapper">
                   <label class="radio-button">
-                    <input id="option2" name="radio-group" type="radio">
+                    <input id="option2" name="radio-group" type="radio" value="profundidade">
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">Profundidade</span>
                   </label>
                 </div>
                 <div class="radio-wrapper">
                   <label class="radio-button">
-                    <input id="option3" name="radio-group" type="radio">
+                    <input id="option3" name="radio-group" type="radio" value="profundidadelimit">
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">Profundidade Limitada</span>
-                    <input type="number" class="deepLimit" min="1">
+                    <input type="number" id="limited-depth" class="deepLimit" min="1">
                   </label>
                 </div>
                 <div class="radio-wrapper">
                   <label class="radio-button">
-                    <input id="option3" name="radio-group" type="radio">
+                    <input id="option3" name="radio-group" type="radio" value="aprofundamento">
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">Aprofundamento Iterativo</span>
                   </label>
                 </div>
                 <div class="radio-wrapper">
                   <label class="radio-button">
-                    <input id="option3" name="radio-group" type="radio">
+                    <input id="option3" name="radio-group" type="radio" value="bidirecional">
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">Bidirecional</span>
                   </label>
@@ -70,17 +74,15 @@
             </div>
             <hr id="hr" style="display: none; width: 90%;">
             <div class="btnModal">
-              <input type="submit" value="Iniciar" class="Btn-start" id="Btn">
+              <input type="submit" value="Iniciar" class="Btn-start" id="Btn" onclick="submit()">
             </div>
           </div>
         </div>
         <div class="menu">
           <div class="main">
             <div class="optContainer persons" id="option1Content">
-              <img src="./Public/img/cards/5e1eeae8-41e6-42e9-9b0b-e5bf2c79af44.png" id="drag1" draggable="true"
-                ondragstart="drag(event)" alt="Kynull">
-              <img src="./Public/img/cards/201b0d47-3db4-4105-88f6-059093df4433.png" id="drag2" draggable="true"
-                ondragstart="drag(event)" alt="Ashborn">
+              <img src="./Public/img/cards/5e1eeae8-41e6-42e9-9b0b-e5bf2c79af44.png" id="drag1" draggable="true" ondragstart="drag(event)" alt="Kynull">
+              <img src="./Public/img/cards/201b0d47-3db4-4105-88f6-059093df4433.png" id="drag2" draggable="true" ondragstart="drag(event)" alt="Ashborn">
             </div>
             <div class="optContainer" id="option2Content">
 

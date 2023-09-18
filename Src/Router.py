@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from Src.Resources.Amplitude import Amplitude
 from Src.Resources.Profundidade import Profundidade
 from Src.Resources.Aprofundamento import Aprofundamento
@@ -41,26 +41,42 @@ def loading():
 
 @Router.route("/amplitude")
 def amplitude():
-    search = Amplitude(teste, "3-5", "6-3")
+    ambient = request.args.get('ambient')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
+
+    search = Amplitude(ambient, beginning, destination)
     
     return search.make()
 
 @Router.route("/profundidade", defaults={'limit':None})
 @Router.route("/profundidade/<int:limit>")
 def profundidade(limit):
-    search = Profundidade(teste, "3-5", "6-3")
+    ambient = request.args.get('ambient')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
+
+    search = Profundidade(ambient, beginning, destination)
     
     return search.make(limit)
 
 @Router.route("/aprofundamento")
 def aprofundamento():
-    search = Aprofundamento(teste, "3-5", "6-3")
+    ambient = request.args.get('ambient')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
+
+    search = Aprofundamento(ambient, beginning, destination)
     
     return search.make(len(teste))
 
 
 @Router.route("/bidirecional")
 def bidirecional():
-    search = Bidirecional(teste, "3-5", "6-3")
+    ambient = request.args.get('ambient')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
+
+    search = Bidirecional(ambient, beginning, destination)
     
     return search.make()
