@@ -1,5 +1,5 @@
 from Src.Models.List import List
-from Src.Util.HexagonalCartesian import adjacent_coords
+from Src.Util.HexagonalCartesian import adjacent_coords, has_in_ambient
 
 class Amplitude(object):
     
@@ -39,8 +39,7 @@ class Amplitude(object):
             # varre todos as conexões dentro do grafo a partir de atual
             for coord in adjacents:
 
-
-                if coord in self.ambient:
+                if has_in_ambient(coord, self.ambient):
 
                     # pressuponho que não foi visitado
                     flag = True
@@ -73,4 +72,4 @@ class Amplitude(object):
                             
                             return path
 
-        return "caminho não encontrado"
+        return "error"

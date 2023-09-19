@@ -1,5 +1,5 @@
 from Src.Models.List import List
-from Src.Util.HexagonalCartesian import adjacent_coords
+from Src.Util.HexagonalCartesian import adjacent_coords, has_in_ambient
 
 class Bidirecional(object):
     
@@ -64,7 +64,7 @@ class Bidirecional(object):
                 # varre todos as conexões dentro do grafo a partir de atual
                 for coord in adjacents:
 
-                    if coord in self.ambient:
+                    if has_in_ambient(coord, self.ambient):
         
                         # pressuponho que não foi visitado
                         flag = True
@@ -116,7 +116,7 @@ class Bidirecional(object):
                 # varre todos as conexões dentro do grafo a partir de atual
                 for coord in adjacents:
 
-                    if coord in self.ambient:
+                    if has_in_ambient(coord, self.ambient):
         
                         # pressuponho que não foi visitado
                         flag = True
@@ -156,4 +156,4 @@ class Bidirecional(object):
                             
             ni += 1
     
-        return "caminho não encontrado"
+        return "error"

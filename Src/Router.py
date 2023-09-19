@@ -41,7 +41,7 @@ def loading():
 
 @Router.route("/amplitude")
 def amplitude():
-    ambient = request.args.get('ambient')
+    ambient = request.args.get('ambient').split(',')
     beginning = request.args.get('beginning')
     destination = request.args.get('destination')
 
@@ -52,7 +52,7 @@ def amplitude():
 @Router.route("/profundidade", defaults={'limit':None})
 @Router.route("/profundidade/<int:limit>")
 def profundidade(limit):
-    ambient = request.args.get('ambient')
+    ambient = request.args.get('ambient').split(',')
     beginning = request.args.get('beginning')
     destination = request.args.get('destination')
 
@@ -62,7 +62,7 @@ def profundidade(limit):
 
 @Router.route("/aprofundamento")
 def aprofundamento():
-    ambient = request.args.get('ambient')
+    ambient = request.args.get('ambient').split(',')
     beginning = request.args.get('beginning')
     destination = request.args.get('destination')
 
@@ -73,7 +73,7 @@ def aprofundamento():
 
 @Router.route("/bidirecional")
 def bidirecional():
-    ambient = request.args.get('ambient')
+    ambient = request.args.get('ambient').split(',')
     beginning = request.args.get('beginning')
     destination = request.args.get('destination')
 

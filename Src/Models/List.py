@@ -4,7 +4,7 @@ class List(object):
     head = None
     tail = None
 
-    # INSERE NO INÍCIO DA LISTA
+    # INSERE NO INÍCIO DA LISTA (inserePrimeiro)
     def unshift(self, coord, level, father):
         new_node = Node(father, coord, level, None, None)
 
@@ -16,7 +16,7 @@ class List(object):
             self.head.previous = new_node
             self.head = new_node
 
-    # INSERE NO FIM DA LISTA
+    # INSERE NO FIM DA LISTA (insereUltimo)
     def push(self, coord, level, father):
 
         new_node = Node(father, coord, level, None, None)
@@ -29,7 +29,7 @@ class List(object):
             new_node.previous   = self.tail
             self.tail = new_node
 
-    # REMOVE NO INÍCIO DA LISTA
+    # REMOVE NO INÍCIO DA LISTA (deletaPrimeiro)
     def shift(self):
         if self.head is None:
             return None
@@ -42,35 +42,35 @@ class List(object):
                 self.tail = None
             return node
 
-    # REMOVE NO FIM DA LISTA
+    # REMOVE NO FIM DA LISTA (deletaUltimo)
     def pop(self):
         if self.tail is None:
             return None
         else:
             node = self.tail
-            self.tail = self.tail.next
+            self.tail = self.tail.previous
             if self.tail is not None:
-                self.tail.previous = None
+                self.tail.next = None
             else:
                 self.head = None
             return node
 
-    # RETORNA O PRIMEIRO DA LISTA
+    # RETORNA O PRIMEIRO DA LISTA (primeiro)
     def first(self):
         return self.head
     
-    # RETORNA O ÚLTIMO DA LISTA
+    # RETORNA O ÚLTIMO DA LISTA (ultimo)
     def last(self):
         return self.tail
 
-    # VERIFICA SE LISTA ESTÁ VAZIA
+    # VERIFICA SE LISTA ESTÁ VAZIA (vazio)
     def empty(self):
         if self.head is None:
             return True
         else:
             return False
         
-    # EXIBE O CONTEÚDO DA LISTA
+    # EXIBE O CONTEÚDO DA LISTA (exibeLista)
     def getList(self):
         
         aux = self.head
@@ -84,7 +84,7 @@ class List(object):
         
         return str
     
-    # EXIBE O CAMINHO ENCONTRADO
+    # EXIBE O CAMINHO ENCONTRADO (exibeCaminho)
     def getPath(self):
         
         atual = self.tail
@@ -98,7 +98,7 @@ class List(object):
         path = path[::-1]
         return path
     
-    # EXIBE O CAMINHO ENCONTRADO (BIDIRECIONAL)
+    # EXIBE O CAMINHO ENCONTRADO (BIDIRECIONAL) (exibeCaminho1)
     def getPathBI(self,value):
                 
         current = self.head

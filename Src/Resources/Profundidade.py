@@ -1,5 +1,5 @@
 from Src.Models.List import List
-from Src.Util.HexagonalCartesian import adjacent_coords
+from Src.Util.HexagonalCartesian import adjacent_coords, has_in_ambient
 
 class Profundidade(object):
     
@@ -27,7 +27,6 @@ class Profundidade(object):
         line = []
         line.append(self.beginning)
         line.append(0)
-
         visited.append(line)
 
         while search_list.empty() == False:
@@ -40,15 +39,17 @@ class Profundidade(object):
             if limit != None:
                 if current.level < limit:
                     in_not_the_end = True
+            else:
+                in_not_the_end = True 
 
             if  in_not_the_end:
+
                 adjacents = adjacent_coords(current.coord)
 
                 # varre todos as conexões dentro do grafo a partir de atual
                 for coord in adjacents:
 
-
-                    if coord in self.ambient:
+                    if has_in_ambient(coord, self.ambient):
 
                         # pressuponho que não foi visitado
                         flag = True
@@ -81,4 +82,4 @@ class Profundidade(object):
                                 
                                 return path
 
-        return "caminho não encontrado"
+        return "error"

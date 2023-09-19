@@ -29,4 +29,11 @@ def adjacent_coords(coord):
         coords.append("%s-%s" % (x, y + 1))
 
     return coords 
+
+def has_in_ambient(coord, ambient):
+    for ambient_coord in ambient:
+        if(ambient_coord == coord):
+            return True
+        
+    return False
     
