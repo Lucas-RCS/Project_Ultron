@@ -1,3 +1,5 @@
+const Screen = new ScreenMenager();
+
 const Arena = new OctagonalArena(
   [
     [14, 14],
@@ -203,11 +205,16 @@ const Arena = new OctagonalArena(
   ],
   {
     cartesiano_size: 25,
-    scale: 0.6,
-  }
+    scale: 0.7,
+  },
+  Screen
 );
 
 Arena.createGrid();
+
+function clearArenaState() {
+  Arena.clearState();
+}
 
 function drag(ev) {
   if (!ev.target.classList.contains("deactive"))
@@ -233,13 +240,14 @@ function submit() {
 
   for (var i = 0; i < els.length; i++) if (els[i].checked) radio = els[i].value;
 
-  const limited_depth = document.getElementById("limited-depth") ?? 1;
+  const limited_depth = document.getElementById("limited-depth").value ?? 1;
 
   let cards = Arena.Card;
 
   if (cards[0] == null || cards[1] == null)
-    alert(
-      "Para iniciar o combate, é necessário inserir pelo menos dois cards na arena."
+    Screen.alert(
+      "Para iniciar o combate, é necessário inserir pelo menos dois cards na arena.",
+      "warning"
     );
   else {
     var xhr = new XMLHttpRequest();
@@ -247,15 +255,18 @@ function submit() {
     // Configura a função de callback para quando a resposta for recebida
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        var resposta = JSON.parse(xhr.responseText);
+        if (xhr.responseText == "error")
+          Screen.alert("Caminho não encontrado", "danger");
+        else {
+          var resposta = JSON.parse(xhr.responseText);
 
-        Arena.makePath(resposta);
-
-        console.log(resposta);
+          Screen.alert("Caminho encontrado", "success");
+          Arena.makePath(resposta);
+        }
       }
     };
 
-    if (radio == "profundidadelimit") radio += "/" + limited_depth;
+    if (radio == "profundidadelimit") radio = "/profundidade/" + limited_depth;
 
     // Configura a requisição
     xhr.open(

@@ -26,9 +26,10 @@ class OctagonalArena {
    * @param {Array<any>} options
    * @param {JSON} settings
    */
-  constructor(ambient = [], settings = {}) {
+  constructor(ambient = [], settings = {}, screen) {
     this.#ambient = ambient;
     Object.assign(this.#settings, settings);
+    this.Screen = screen;
   }
 
   cslick(event, element, x, y) {
@@ -93,7 +94,10 @@ class OctagonalArena {
         this.Card = [cardClone, coord];
       }
     } else
-      alert("Não é possível incluir personagens em coordenadas desativadas.");
+      this.Screen.alert(
+        "Não é possível incluir personagens em coordenadas desativadas.",
+        "danger"
+      );
   }
 
   getAmbient() {
@@ -105,24 +109,59 @@ class OctagonalArena {
   }
 
   makePath(paths) {
-    this.#card1[0];
+    let path = paths[0];
 
-    console.log(paths);
+    paths.splice(0, 1);
 
-    let i = 0;
+    let [x, y] = path.split("-");
 
-    for (const path of paths) {
+    this.#card1[0].style.top = this.#grid[x][y].style.top;
+    this.#card1[0].style.left = this.#grid[x][y].style.left;
+
+    this.#card1[1] = `${x}-${y}`;
+
+    if (paths.length != 0)
       setTimeout(() => {
-        let [x, y] = path.split("-");
+        this.makePath(paths);
+      }, 1150);
+    else {
+      this.#card2[0].style.opacity = "0";
+      setTimeout(() => {
+        this.#card2[0].parentNode.removeChild(this.#card2[0]);
 
-        this.#card1[0].style.top = this.#grid[x][y].style.top;
-        this.#card1[0].style.left = this.#grid[x][y].style.left;
+        for (const element of document.getElementById("cardBar").children)
+          if (
+            element.getElementsByTagName("p")[0].innerText ===
+            this.#card2[0].getAttribute("alt")
+          )
+            element.parentNode.removeChild(element);
 
-        this.#card1[1] = [x, y];
-      }, i * 1150);
+        for (const element of document.getElementById("option1Content")
+          .children)
+          if (
+            element.getAttribute("alt") == this.#card2[0].getAttribute("alt")
+          ) {
+            element.classList.remove("deactve");
+            element.setAttribute("state", 0);
+          }
 
-      i++;
+        this.#card2 = null;
+      }, 1000);
     }
+  }
+
+  clearState() {
+    document.getElementById("cardBar").innerHTML = "";
+    this.#contentDocumentElement.innerHTML = "";
+
+    this.#card1 = null;
+    this.#card2 = null;
+
+    for (const element of document.getElementById("option1Content").children)
+      if (element.classList.contains("deactve")) {
+        element.classList.remove("deactve");
+        element.setAttribute("state", 0);
+      }
   }
 
   get Card() {
@@ -136,7 +175,7 @@ class OctagonalArena {
       this.#card1 = card;
 
       cardBar.innerHTML += `
-      <div class="cardLine">
+      <div id="cardCoroa" class="cardLine">
         <img src="./Public/img/coroa.png">
         <p>${card[0].getAttribute("alt")}</p>
       </div>
@@ -145,7 +184,7 @@ class OctagonalArena {
       this.#card2 = card;
 
       cardBar.innerHTML += `
-      <div class="cardLine">
+      <div id="cardCiclo" class="cardLine">
         <img src="./Public/img/ciclo.png">
         <p>${card[0].getAttribute("alt")}</p>
       </div>
