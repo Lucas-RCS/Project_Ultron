@@ -379,6 +379,9 @@ body {
   z-index: 999;
 }
 
+
+
+
 #svg {
   width: 100%;
   height: 100%;
@@ -401,6 +404,20 @@ body {
   width: 100%;
   height: 70%;
   margin-top: 7%;
+  overflow-y: scroll;
+  display: flex;
+}
+.modalContainer::-webkit-scrollbar {
+  width: 5px;
+}
+.modalContainer::-webkit-scrollbar-track {
+  background: var(--graydark);
+  border-radius: 20px;
+}
+.modalContainer::-webkit-scrollbar-thumb {
+  background: var(--red);
+  border-radius: 20px;
+
 }
 
 /* Radio Modal */

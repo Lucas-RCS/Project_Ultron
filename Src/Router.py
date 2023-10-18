@@ -3,6 +3,7 @@ from Src.Resources.Amplitude import Amplitude
 from Src.Resources.Profundidade import Profundidade
 from Src.Resources.Aprofundamento import Aprofundamento
 from Src.Resources.Bidirecional import Bidirecional
+from Src.Resources.CustoUniforme import CustoUniforme
 
 Router = Blueprint('router', __name__)
 
@@ -80,3 +81,17 @@ def bidirecional():
     search = Bidirecional(ambient, beginning, destination)
     
     return search.make()
+
+@Router.route("/custo_uniforme")
+def custo_uniforme():
+    ambient = request.args.get('ambient').split(',')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
+
+    # Crie uma instância de CustoUniforme
+    search = CustoUniforme(ambient, beginning, destination)
+    
+    # Chame o método de busca por Custo Uniforme
+    result = search.search()
+
+    return result
