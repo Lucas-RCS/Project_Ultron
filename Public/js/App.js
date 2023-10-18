@@ -258,10 +258,15 @@ function submit() {
         if (xhr.responseText == "error")
           Screen.alert("Caminho não encontrado", "danger");
         else {
-          var resposta = JSON.parse(xhr.responseText);
+          var path = JSON.parse(xhr.responseText);
+
+          console.log("Origem: ", cards[0][1]);
+          console.log("Destino: ", cards[1][1]);
+          console.log("Caminho: ", path);
+          console.log("\n\n\n");
 
           Screen.alert("Caminho encontrado", "success");
-          Arena.makePath(resposta);
+          Arena.makePath(path);
         }
       }
     };
