@@ -88,10 +88,7 @@ def custo_uniforme():
     beginning = request.args.get('beginning')
     destination = request.args.get('destination')
 
-    # Crie uma instância de CustoUniforme
     search = CustoUniforme(ambient, beginning, destination)
-    
-    # Chame o método de busca por Custo Uniforme
-    result = search.search()
 
-    return result
+    return search.make()
+
