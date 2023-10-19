@@ -5,6 +5,7 @@ from Src.Resources.Aprofundamento import Aprofundamento
 from Src.Resources.Bidirecional import Bidirecional
 from Src.Resources.CustoUniforme import CustoUniforme
 from Src.Resources.Greedy import GreedySearch
+import numpy as np
 # from Src.Resources.Aestrela import AStartSeach
 # from Src.Resources.AIAestrela import AiaStartSeach
 
@@ -88,20 +89,36 @@ def bidirecional():
 @Router.route("/custo_uniforme")
 def custo_uniforme():
     ambient = request.args.get('ambient').split(',')
+    weights  = request.args.get('weights').split(',')
     beginning = request.args.get('beginning')
     destination = request.args.get('destination')
 
-    search = CustoUniforme(ambient, beginning, destination)
+    search = CustoUniforme(ambient, weights, beginning, destination)
 
-    return search.make()
+    return search.make()[0][::-1]
+
+
 
 @Router.route("/greedy")
 def greedy():
     ambient = request.args.get('ambient').split(',')
+    weights  = request.args.get('weights').split(',')
     beginning = request.args.get('beginning')
     destination = request.args.get('destination')
 
-    search = GreedySearch(ambient, beginning, destination)
+    h = np.zeros((n,n),int)
+    i = 0
+    for no_origem in ambient:
+        j = 0
+        for no_destino in ambient:
+            if no_origem != no_destino:
+                search = CustoUniforme(ambient, weights, no_origem, no_destino)
+                v  = search.make()[1]
+                h[i][j] = v*rd.uniform(0,1)
+            j += 1
+        i += 1
+
+    search = GreedySearch(ambient, weights, beginning, destination)
 
     return search.make()
 

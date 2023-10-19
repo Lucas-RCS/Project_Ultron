@@ -4,5 +4,6 @@ class Node(object):
         self.father       = father
         self.coord    = coord
         self.level     = level
+        self.valor2     = 0
         self.previous  = previous
         self.next   = next

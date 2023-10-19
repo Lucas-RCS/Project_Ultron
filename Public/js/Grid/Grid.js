@@ -7,6 +7,7 @@ class OctagonalArena {
   #interactionDocumentElement;
 
   #ambient = [];
+  #weight = [];
   #grid = {};
 
   #card1 = null;
@@ -14,6 +15,8 @@ class OctagonalArena {
 
   base_size_w;
   base_size_h;
+
+  groundMod = 0;
 
   #settings = {
     scale: 1,
@@ -26,27 +29,58 @@ class OctagonalArena {
    * @param {Array<any>} options
    * @param {JSON} settings
    */
-  constructor(ambient = [], settings = {}, screen) {
+  constructor(ambient = [], weight = [], settings = {}, screen) {
     this.#ambient = ambient;
+
+    this.#weight = weight;
+
     Object.assign(this.#settings, settings);
     this.Screen = screen;
   }
 
-  cslick(event, element, x, y) {
+  click(event, element, x, y) {
+    const index = this.#ambient.findIndex(
+      (coord) => coord[0] == x && coord[1] == y
+    );
+
+    var weight = -1;
+
+    element.classList.remove("n1", "n2", "n3");
+
     if (!element.classList.contains("active")) {
       this.#ambient.push([x, y]);
+      this.#weight.push(this.groundMod);
+      weight = this.groundMod;
 
       element.classList.add("active");
     } else {
-      this.#ambient.splice(
-        this.#ambient.findIndex((coord) => coord[0] == x && coord[1] == y),
-        1
-      );
+      if (this.#weight[index] != this.groundMod) {
+        this.#weight[index] = this.groundMod;
+        weight = this.groundMod;
+      } else {
+        this.#ambient.splice(index, 1);
+        this.#weight.splice(index, 1);
 
-      element.classList.remove("active");
+        weight = -1;
+        element.classList.remove("active");
+      }
+    }
+
+    switch (weight) {
+      case 1:
+        element.classList.add("n1");
+        break;
+      case 2:
+        element.classList.add("n2");
+        break;
+      case 3:
+        element.classList.add("n3");
+        break;
     }
 
     console.log(this.#ambient);
+    console.log(this.#weight);
+    console.log(weight);
   }
 
   allowDrop(ev) {
@@ -108,6 +142,14 @@ class OctagonalArena {
     });
   }
 
+  getAmbientWeights() {
+    var weight = [];
+
+    for (let i = 0; i < this.#ambient.length; i++) weight.push(this.#weight[i]);
+
+    return weight;
+  }
+
   makePath(paths) {
     let path = paths[0];
 
@@ -164,34 +206,6 @@ class OctagonalArena {
       }
   }
 
-  get Card() {
-    return [this.#card1, this.#card2];
-  }
-
-  set Card(card) {
-    let cardBar = document.getElementById("cardBar");
-
-    if (this.#card1 == null) {
-      this.#card1 = card;
-
-      cardBar.innerHTML += `
-      <div id="cardCoroa" class="cardLine">
-        <img src="./Public/img/coroa.png">
-        <p>${card[0].getAttribute("alt")}</p>
-      </div>
-      `;
-    } else {
-      this.#card2 = card;
-
-      cardBar.innerHTML += `
-      <div id="cardCiclo" class="cardLine">
-        <img src="./Public/img/ciclo.png">
-        <p>${card[0].getAttribute("alt")}</p>
-      </div>
-      `;
-    }
-  }
-
   createGrid() {
     const root = document.documentElement;
 
@@ -210,6 +224,7 @@ class OctagonalArena {
     base.appendChild(grid);
 
     const ambient = this.#ambient;
+    const weight = this.#weight;
 
     let { scale, cartesiano_size } = this.#settings;
 
@@ -258,11 +273,27 @@ class OctagonalArena {
           (coord) => coord[0] == i && coord[1] == e
         );
 
-        hex.classList = `hex ${isActive == -1 ? "" : "active"}`;
+        let wIndex = isActive != -1 ? weight[isActive] : 0;
+
+        let classOfMod;
+
+        switch (wIndex) {
+          case 1:
+            classOfMod = "n1";
+            break;
+          case 2:
+            classOfMod = "n2";
+            break;
+          case 3:
+            classOfMod = "n3";
+            break;
+        }
+
+        hex.classList = `hex ${isActive == -1 ? "" : "active"} ${classOfMod}`;
         hex.setAttribute("id", `${i}-${e}`);
 
         hex.onclick = (event) => {
-          this.cslick(event, hex, i, e);
+          this.click(event, hex, i, e);
         };
 
         hex.style.minHeight = hex_height;
@@ -319,26 +350,34 @@ class OctagonalArena {
       grid.appendChild(hex_row);
     }
   }
-}
 
-// Efeito de clique na opção de terreno
-function selectTerrain(terrainId) {
-  // Remova a classe "selected" de todos os terrenos
-  var terrains = document.querySelectorAll(".optContainer.ground .hexagon");
-  terrains.forEach(function (terrain) {
-    terrain.classList.remove("selected");
-  });
+  get Card() {
+    return [this.#card1, this.#card2];
+  }
 
-  // Adicione a classe "selected" ao terreno selecionado
-  var selectedTerrainElement = document.querySelector(".optContainer.ground ." + terrainId);
-  selectedTerrainElement.classList.add("selected");
+  set Card(card) {
+    let cardBar = document.getElementById("cardBar");
 
-  selectedTerrain = terrainId;
+    if (this.#card1 == null) {
+      this.#card1 = card;
 
-  console.log("Terreno selecionado " + terrainId);
+      cardBar.innerHTML += `
+      <div id="cardCoroa" class="cardLine">
+        <img src="./Public/img/coroa.png">
+        <p>${card[0].getAttribute("alt")}</p>
+      </div>
+      `;
+    } else {
+      this.#card2 = card;
 
-  // Atualize as cores dos grids com base no terreno selecionado
-  updateGridColors(terrainId);
+      cardBar.innerHTML += `
+      <div id="cardCiclo" class="cardLine">
+        <img src="./Public/img/ciclo.png">
+        <p>${card[0].getAttribute("alt")}</p>
+      </div>
+      `;
+    }
+  }
 }
 
 // Adicione um ouvinte de eventos de clique a cada grid
@@ -352,8 +391,6 @@ grids.forEach(function (grid) {
     }
   });
 });
-
-
 
 function updateGridColors(terrainId) {
   const middleColor = {

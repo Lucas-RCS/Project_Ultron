@@ -176,13 +176,49 @@ body {
   background: #ce0000;
 }
 
+.active .right {
+  border-left-color: #ce0000;
+}
+
+.n1 .left {
+  border-right-color: #3e661f;
+}
+
+.n1 .middle {
+  background: #3e661f;
+}
+
+.n1 .right {
+  border-left-color: #3e661f;
+}
+
+.n2 .left {
+  border-right-color: #774e1c;
+}
+
+.n2 .middle {
+  background: #774e1c;
+}
+
+.n2 .right {
+  border-left-color: #774e1c;
+}
+
+.n3 .left {
+  border-right-color: #b89130;
+}
+
+.n3 .middle {
+  background: #b89130;
+}
+
+.n3 .right {
+  border-left-color: #b89130;
+}
+
 .active .middle span {
   color: black;
   opacity: 0.4;
-}
-
-.active .right {
-  border-left-color: #ce0000;
 }
 
 /* --------------------------------------------- */
@@ -326,14 +362,43 @@ body {
 }
 
 /* Terrenos */
+#groundBar {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#groundBar p {
+  margin: 0px;
+  margin-top: 1px;
+  margin-inline: 5px;
+}
+
+#groundBar .hexagon {
+  margin: 0px !important;
+}
+
 .hexagon {
-  width: 45px;
+  width: 40px;
   height: 45px;
   position: relative;
   background-size: cover;
   background-position: center;
   margin: 0 10px;
   cursor: pointer;
+}
+
+.ground0 {
+  background-image: url("./../img/ground/concreto.jpg");
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  rotate: 90deg;
+  transition: all 0.3s ease-in-out;
 }
 
 .ground1 {
@@ -382,9 +447,6 @@ body {
   z-index: 999;
 }
 
-
-
-
 #svg {
   width: 100%;
   height: 100%;
@@ -423,7 +485,6 @@ body {
 .modalContainer::-webkit-scrollbar-thumb {
   background: var(--red);
   border-radius: 20px;
-
 }
 
 /* Radio Modal */
@@ -476,7 +537,10 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
-.modalContainer .radio-button input[type="radio"]:checked~.radio-checkmark:before {
+.modalContainer
+  .radio-button
+  input[type="radio"]:checked
+  ~ .radio-checkmark:before {
   transform: translate(-50%, -50%) scale(1);
 }
 

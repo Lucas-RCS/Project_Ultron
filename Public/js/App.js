@@ -203,6 +203,16 @@ const Arena = new OctagonalArena(
     [18, 5],
     [19, 5],
   ],
+  [
+    0, 0, 1, 1, 0, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 1, 0,
+    0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0,
+    3, 0, 0, 0, 0, 0, 0, 3, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0,
+    0, 0, 0, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+    3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
+  ],
   {
     cartesiano_size: 25,
     scale: 0.7,
@@ -219,6 +229,17 @@ function clearArenaState() {
 function drag(ev) {
   if (!ev.target.classList.contains("deactive"))
     ev.dataTransfer.setData("card", ev.target.id);
+}
+
+function selectGround(name, type, mod) {
+  Arena.groundMod = mod;
+
+  let html = `
+    <div class="hexagon ${type}" title="Default"></div>
+    <p>${name}</p>
+  `;
+
+  document.getElementById("groundBar").innerHTML = html;
 }
 
 function construirURLComParametros(url, parametros) {
@@ -272,17 +293,27 @@ function submit() {
     };
 
     if (radio == "profundidadelimit") radio = "/profundidade/" + limited_depth;
-
-    // Configura a requisição
-    xhr.open(
-      "GET",
-      construirURLComParametros(`./${radio}`, {
+    else if (
+      radio == "custo_uniforme" ||
+      radio == "greedy" ||
+      radio == "aestrela" ||
+      radio == "aiaestrela"
+    )
+      parametros = {
+        ambient: Arena.getAmbient(),
+        weights: Arena.getAmbientWeights(),
+        beginning: cards[0][1],
+        destination: cards[1][1],
+      };
+    else
+      parametros = {
         ambient: Arena.getAmbient(),
         beginning: cards[0][1],
         destination: cards[1][1],
-      }),
-      true
-    );
+      };
+
+    // Configura a requisição
+    xhr.open("GET", construirURLComParametros(`./${radio}`, parametros), true);
 
     // Envia a requisição
     xhr.send();

@@ -1,5 +1,11 @@
 
-def adjacent_coords(coord):
+def get_price(cood, ambient, weight):
+    for current_coord in ambient:
+        if current_coord == cood:
+            return int(weight[ambient.index(current_coord)])
+
+
+def adjacent_coords(coord, ):
     coord = coord.split('-')
     
     x = int(coord[0])

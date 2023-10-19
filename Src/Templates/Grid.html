@@ -14,7 +14,12 @@
     </div>
 
     <!--Cards Bar-->
-    <div id="cardBar">
+    <div id="cardBar"></div>
+
+    <!--Ground Bar-->
+    <div id="groundBar">
+      <div class="hexagon ground0" title="Default"></div>
+      <p>Default</p>
     </div>
 
     <!--Menu Bar-->
@@ -72,28 +77,28 @@
                 </div>
                 <div class="radio-wrapper">
                   <label class="radio-button">
-                    <input id="option3" name="radio-group" type="radio" value="bidirecional">
+                    <input id="option3" name="radio-group" type="radio" value="custo_uniforme">
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">Custo Uniforme</span>
                   </label>
                 </div>
                 <div class="radio-wrapper">
                   <label class="radio-button">
-                    <input id="option3" name="radio-group" type="radio" value="bidirecional">
+                    <input id="option3" name="radio-group" type="radio" value="greedy">
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">Greedy</span>
                   </label>
                 </div>
                 <div class="radio-wrapper">
                   <label class="radio-button">
-                    <input id="option3" name="radio-group" type="radio" value="bidirecional">
+                    <input id="option3" name="radio-group" type="radio" value="aestrela">
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">A*</span>
                   </label>
                 </div>
                 <div class="radio-wrapper">
                   <label class="radio-button">
-                    <input id="option3" name="radio-group" type="radio" value="bidirecional">
+                    <input id="option3" name="radio-group" type="radio" value="aiaestrela">
                     <span class="radio-checkmark"></span>
                     <span class="radio-label">AIA*</span>
                   </label>
@@ -109,20 +114,18 @@
         <div class="menu">
           <div class="main">
             <div class="optContainer persons" id="option1Content">
-              <img src="./Public/img/cards/5e1eeae8-41e6-42e9-9b0b-e5bf2c79af44.png" id="drag1" draggable="true"
-                ondragstart="drag(event)" alt="Kynull">
-              <img src="./Public/img/cards/201b0d47-3db4-4105-88f6-059093df4433.png" id="drag2" draggable="true"
-                ondragstart="drag(event)" alt="Ashborn">
-              <img src="./Public/img/cards/token_1.png" id="drag3" draggable="true" ondragstart="drag(event)"
-                alt="Alicia">
+              <img src="./Public/img/cards/5e1eeae8-41e6-42e9-9b0b-e5bf2c79af44.png" id="drag1" draggable="true" ondragstart="drag(event)" alt="Kynull">
+              <img src="./Public/img/cards/201b0d47-3db4-4105-88f6-059093df4433.png" id="drag2" draggable="true" ondragstart="drag(event)" alt="Ashborn">
+              <img src="./Public/img/cards/token_1.png" id="drag3" draggable="true" ondragstart="drag(event)" alt="Alicia">
             </div>
             <div class="optContainer" id="option2Content">
 
             </div>
             <div class="optContainer ground" id="option3Content">
-              <div class="hexagon ground1" onclick="selectTerrain('ground1')" title="Grama"></div>
-              <div class="hexagon ground2" onclick="selectTerrain('ground2')" title="Lama"></div>
-              <div class="hexagon ground3" onclick="selectTerrain('ground3')" title="Areia"></div>
+              <div class="hexagon ground0" onclick="selectGround('Default', 'ground0', 0)" title="Default"></div>
+              <div class="hexagon ground1" onclick="selectGround('Grama', 'ground1', 1)" title="Grama"></div>
+              <div class="hexagon ground2" onclick="selectGround('Terra', 'ground2', 2)" title="Terra"></div>
+              <div class="hexagon ground3" onclick="selectGround('Areia', 'ground3', 3)" title="Areia"></div>
             </div>
 
           </div>
