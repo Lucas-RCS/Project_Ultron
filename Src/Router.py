@@ -4,6 +4,9 @@ from Src.Resources.Profundidade import Profundidade
 from Src.Resources.Aprofundamento import Aprofundamento
 from Src.Resources.Bidirecional import Bidirecional
 from Src.Resources.CustoUniforme import CustoUniforme
+from Src.Resources.Greedy import GreedySearch
+from Src.Resources.Aestrela import AStartSeach
+from Src.Resources.AIAestrela import AiaStartSeach
 
 Router = Blueprint('router', __name__)
 
@@ -91,4 +94,37 @@ def custo_uniforme():
     search = CustoUniforme(ambient, beginning, destination)
 
     return search.make()
+
+@Router.route("/custo_uniforme")
+def greedy():
+    ambient = request.args.get('ambient').split(',')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
+
+    search = GreedySearch(ambient, beginning, destination)
+
+    return search.make()
+
+@Router.route("/custo_uniforme")
+def aStar():
+    ambient = request.args.get('ambient').split(',')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
+
+    search = AStartSeach(ambient, beginning, destination)
+
+    return search.make()
+
+@Router.route("/custo_uniforme")
+def aiaStar():
+    ambient = request.args.get('ambient').split(',')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
+
+    search = AiaStartSeach(ambient, beginning, destination)
+
+    return search.make()
+
+
+
 
