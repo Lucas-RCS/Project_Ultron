@@ -1,0 +1,157 @@
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Ultron</title>
+  <link id="favicon" rel="shortcut icon" href="./Public/img/LogoUltron_fav.png" type="image/x-icon" />
+  <link rel="stylesheet" href="./Public/css/grid.css">
+</head>
+
+<body>
+  <div>
+    <div id="base">
+    </div>
+
+    <!--Cards Bar-->
+    <div id="cardBar"></div>
+
+    <!--Ground Bar-->
+    <div id="groundBar">
+      <div class="hexagon ground0" title="Default"></div>
+      <h4>Default</h4>
+      <h6>Peso: 1</h6>
+    </div>
+
+    <!--Menu Bar-->
+    <div class="container">
+      <div class="content">
+        <div class="icons" id="openModal">
+          <span><i class="ph-duotone ph-sword pulse"></i></span>
+        </div>
+
+        <div class="modal" id="myModal">
+          <div class="modal-content">
+            <span id="closeModal" style="float: right; cursor: pointer; display: none;">
+              <i class="ph-duotone ph-x-circle"></i>
+            </span>
+            <div id="svg">
+              <object data="./Public/img/LogoUltron_black.svg" type="image/svg+xml" id="svgObject"></object>
+            </div>
+            <div class="modalContainer" id="modalContent" style="display: none;">
+              <div class="radio-container">
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option1" name="radio-group" type="radio" value="amplitude" checked>
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">Amplitude</span>
+                  </label>
+                </div>
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option2" name="radio-group" type="radio" value="profundidade">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">Profundidade</span>
+                  </label>
+                </div>
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option3" name="radio-group" type="radio" value="profundidadelimit">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">Profundidade Limitada</span>
+                    <input type="number" id="limited-depth" class="deepLimit" min="1">
+                  </label>
+                </div>
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option3" name="radio-group" type="radio" value="aprofundamento">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">Aprofundamento Iterativo</span>
+                  </label>
+                </div>
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option3" name="radio-group" type="radio" value="bidirecional">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">Bidirecional</span>
+                  </label>
+                </div>
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option3" name="radio-group" type="radio" value="custo_uniforme">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">Custo Uniforme</span>
+                  </label>
+                </div>
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option3" name="radio-group" type="radio" value="greedy">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">Greedy</span>
+                  </label>
+                </div>
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option3" name="radio-group" type="radio" value="aestrela">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">A*</span>
+                  </label>
+                </div>
+                <div class="radio-wrapper">
+                  <label class="radio-button">
+                    <input id="option3" name="radio-group" type="radio" value="aiaestrela">
+                    <span class="radio-checkmark"></span>
+                    <span class="radio-label">AIA*</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr id="hr" style="display: none; width: 90%;">
+            <div class="btnModal">
+              <input type="submit" value="Iniciar" class="Btn-start" id="Btn" onclick="submit()">
+            </div>
+          </div>
+        </div>
+        <div class="menu">
+          <div class="main">
+            <div class="optContainer persons" id="option1Content">
+              <img src="./Public/img/cards/5e1eeae8-41e6-42e9-9b0b-e5bf2c79af44.png" id="drag1" draggable="true" ondragstart="drag(event)" alt="Kynull">
+              <img src="./Public/img/cards/201b0d47-3db4-4105-88f6-059093df4433.png" id="drag2" draggable="true" ondragstart="drag(event)" alt="Ashborn">
+              <img src="./Public/img/cards/token_1.png" id="drag3" draggable="true" ondragstart="drag(event)" alt="Alicia">
+            </div>
+            <div class="optContainer" id="option2Content">
+
+            </div>
+            <div class="optContainer ground" id="option3Content">
+              <div class="hexagon ground0" onclick="selectGround('Default', 'ground0', 1)" title="Default"></div>
+              <div class="hexagon ground1" onclick="selectGround('Grama', 'ground1', 2)" title="Grama"></div>
+              <div class="hexagon ground2" onclick="selectGround('Terra', 'ground2', 3)" title="Terra"></div>
+              <div class="hexagon ground3" onclick="selectGround('Areia', 'ground3', 4)" title="Areia"></div>
+            </div>
+
+          </div>
+          <div class="footer">
+            <div class="menuOptions">
+              <span>
+                <i class="ph-duotone ph-user-circle-plus iconsMenu" id="option1"></i>
+              </span>
+              <span>
+                <i class="ph-duotone ph-tree-evergreen iconsMenu" id="option3"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="icons" onclick="clearArenaState()">
+          <span><i class="ph-duotone ph-eraser pulse"></i></span>
+        </div>
+      </div>
+    </div>
+</body>
+
+<script src="./Public/js/jquery-3.3.1.min.js"></script>
+<script src="./Public/js/Screen/ScreenMenager.js"></script>
+<script src="./Public/js/Grid/Grid.js"></script>
+<script src="./Public/js/App.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+</html>

@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
+@import url("../css/colors.css");
+
+body {
+    background-color: var(--black) !important;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.loader {
+    width: 60%;
+    height: 10px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    margin-top: 8%;
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    background-color: var(--red);
+    width: 0%;
+    height: 100%;
+    border-radius: 2px;
+    animation: load 3.5s ease-in-out infinite;
+    box-shadow: var(--red) 0px 2px 29px 0px;
+}
+
+.container {
+    display: flex;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0;
+    top: 0 !important;
+    left: 0 !important;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    transform: translateX(0%) !important;
+    background-color: transparent !important;
+    border-radius: 12px;
+    box-shadow: none !important;
+}
+
+.hidden {
+    display: none;
+}
+.svg {
+    width: 45%;
+    height: 100%;
+    display: block;
+    margin-top: 8%;
+    z-index: 999;
+    fill: var(--red);
+}
+
+@keyframes load {
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        right: 0;
+        left: unset;
+    }
+}
+
+#particles-js {
+    position: absolute;
+    width: 100dvw;
+    height: 100dvh;
+}
