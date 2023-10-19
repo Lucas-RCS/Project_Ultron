@@ -1,47 +1,71 @@
-from Src.Util.HexagonalCartesian import adjacent_coords, has_in_ambient
+from Src.Util.HexagonalCartesian import adjacent_coords, has_in_ambient, get_price
 from Src.Models.List import List
 
 class GreedySearch: # Busca gulosa (o_o)
 
     # Construtor
-    def __init__(self, ambient, beginning, destination):
+    def __init__(self, ambient, weights, beginning, destination, H):
         self.ambient = ambient
+        self.weights = weights
         self.beginning = beginning
         self.destination = destination
+        self.H = H
 
-    def greedy(self): 
-        # Manipular a fila para a busca
-        search_list = List()
-        copy_list = List()
-        visited = []
+    def make(self): 
+        ind_f = self.ambient.index(self.destination) 
+
+        l1 = List()
+        l2 = List()
+        visitado = []
+        
+        l1.insereUltimo(self.beginning,0,0,None)
+        l2.insereUltimo(self.beginning,0,0,None)
+        linha = []
+        linha.append(self.beginning)
+        linha.append(0)
+        visitado.append(linha)
+        
+        while l1.vazio() == False:
+            atual = l1.deletaPrimeiro()
             
-        search_list.push(self.beginning, 0, None) # Insere ponto inicial como nó raiz da árvore
-        copy_list.push(self.beginning, 0, None)
+            if atual.estado == self.destination:
+                caminho = []
+                caminho = l2.exibeArvore2(atual.estado,atual.valor1)
+                #print("Cópia da árvore:\n",l2.exibeLista())
+                #print("\nÁrvore de busca:\n",l1.exibeLista(),"\n")
 
-        visited.append([self.beginning, 0])
+                return caminho
+            
+            adjacents = adjacent_coords(atual.estado)
 
-        while not search_list.empty(): # Verifica se é o objetivo
-            current = search_list.shift()
-            adjacents = adjacent_coords(current.coord)
+            for novo in adjacents:
 
-            for coord in adjacents: # Varre todos as conexões dentro do grafo a partir de atual
-                if has_in_ambient(coord, self.ambient):
-                    flag = True
-                    for j in range(len(visited)):
-                        if visited[j][0] == coord:
-                            if visited[j][1] <= (current.level + 1): # Se foi visitado, verifica se o nível é menor
-                                flag = False
+                if has_in_ambient(novo, self.ambient):
+                    
+                    ind1 = self.ambient.index(novo)
+                    
+                    # CÁLCULO DO CUSTO DA ORIGEM ATÉ O NÓ ATUAL
+                    v2 = atual.valor2 + get_price(novo, self.ambient, self.weights)  # custo do caminho
+                    v1 = self.H[ind_f][ind1] # f2(n)
+
+                    flag1 = True
+                    flag2 = True
+                    for j in range(len(visitado)):
+                        if visitado[j][0]==novo:
+                            if visitado[j][1]<=v2:
+                                flag1 = False
                             else:
-                                visited[j][1] = current.level + 1 # Se foi visitado, atualiza o nível
+                                visitado[j][1]=v2
+                                flag2 = False
                             break
 
-                    if flag: # Se não foi visitado, inclui na fila
-                        search_list.push(coord, current.level + 1, current)
-                        copy_list.push(coord, current.level + 1, current)
-                        visited.append([coord, current.level + 1])
-
-                        if coord == self.destination: # Se é o objetivo, retorna o caminho
-                            path = copy_list.getPath()
-                            return path
-
-        return "Caminho não encontrado"
+                    if flag1:
+                        l1.inserePos_X(novo, v1, v2, atual)
+                        l2.inserePos_X(novo, v1, v2, atual)
+                        if flag2:
+                            linha = []
+                            linha.append(novo)
+                            linha.append(v2)
+                            visitado.append(linha)
+                    
+        return "error"  

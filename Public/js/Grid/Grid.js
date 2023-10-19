@@ -16,7 +16,7 @@ class OctagonalArena {
   base_size_w;
   base_size_h;
 
-  groundMod = 0;
+  groundMod = 1;
 
   #settings = {
     scale: 1,
@@ -67,13 +67,13 @@ class OctagonalArena {
     }
 
     switch (weight) {
-      case 1:
+      case 2:
         element.classList.add("n1");
         break;
-      case 2:
+      case 3:
         element.classList.add("n2");
         break;
-      case 3:
+      case 4:
         element.classList.add("n3");
         break;
     }
@@ -278,13 +278,13 @@ class OctagonalArena {
         let classOfMod;
 
         switch (wIndex) {
-          case 1:
+          case 2:
             classOfMod = "n1";
             break;
-          case 2:
+          case 3:
             classOfMod = "n2";
             break;
-          case 3:
+          case 4:
             classOfMod = "n3";
             break;
         }

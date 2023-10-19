@@ -28,8 +28,6 @@ class CustoUniforme(object):
             if atual.estado == self.destination:
                 caminho = []
                 caminho = l2.exibeArvore2(atual.estado,atual.valor1)
-                print("Cópia da árvore:\n",l2.exibeLista())
-                print("\nÁrvore de busca:\n",l1.exibeLista(),"\n")
                 return [caminho, atual.valor2]
         
             adjacents = adjacent_coords(atual.estado)

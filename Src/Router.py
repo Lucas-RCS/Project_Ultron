@@ -6,8 +6,10 @@ from Src.Resources.Bidirecional import Bidirecional
 from Src.Resources.CustoUniforme import CustoUniforme
 from Src.Resources.Greedy import GreedySearch
 import numpy as np
-# from Src.Resources.Aestrela import AStartSeach
-# from Src.Resources.AIAestrela import AiaStartSeach
+import random as rd
+import math
+from Src.Resources.Aestrela import Aestrela
+from Src.Resources.AIAestrela import AIAestrela
 
 Router = Blueprint('router', __name__)
 
@@ -30,6 +32,27 @@ teste = [
     "5-2"
 ];
 
+def gera_H(ambient, weights):
+    n = len(ambient)
+
+    h = np.zeros((n,n),int)
+
+    i = 0
+
+    for no_origem in ambient:
+        j = 0
+        ori_x, ori_y = no_origem.split("-")
+        for no_destino in ambient:
+            if no_origem != no_destino:
+                des_x, des_y = no_destino.split("-")
+                
+                v  = round(math.sqrt((int(ori_x) - int(des_x))**2 + (int(ori_y) - int(des_y))**2) * 2, 0)
+
+                h[i][j] = v*rd.uniform(0,1)
+            j += 1
+        i += 1
+    
+    return h
 
 @Router.route("/")
 @Router.route("/home")
@@ -106,41 +129,37 @@ def greedy():
     beginning = request.args.get('beginning')
     destination = request.args.get('destination')
 
-    h = np.zeros((n,n),int)
-    i = 0
-    for no_origem in ambient:
-        j = 0
-        for no_destino in ambient:
-            if no_origem != no_destino:
-                search = CustoUniforme(ambient, weights, no_origem, no_destino)
-                v  = search.make()[1]
-                h[i][j] = v*rd.uniform(0,1)
-            j += 1
-        i += 1
+    H = gera_H(ambient, weights)
 
-    search = GreedySearch(ambient, weights, beginning, destination)
+    search = GreedySearch(ambient, weights, beginning, destination, H)
 
-    return search.make()
+    return search.make()[::-1]
 
-# @Router.route("/aestrela")
-# def aStar():
-#     ambient = request.args.get('ambient').split(',')
-#     beginning = request.args.get('beginning')
-#     destination = request.args.get('destination')
+@Router.route("/aestrela")
+def aStar():
+    ambient = request.args.get('ambient').split(',')
+    weights  = request.args.get('weights').split(',')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
 
-#     search = AStartSeach(ambient, beginning, destination)
+    H = gera_H(ambient, weights)
 
-#     return search.make()
+    search = Aestrela(ambient, weights, beginning, destination, H)
 
-# @Router.route("/aiaestrela")
-# def aiaStar():
-#     ambient = request.args.get('ambient').split(',')
-#     beginning = request.args.get('beginning')
-#     destination = request.args.get('destination')
+    return search.make()[::-1]
 
-#     search = AiaStartSeach(ambient, beginning, destination)
+@Router.route("/aiaestrela")
+def aiaStar():
+    ambient = request.args.get('ambient').split(',')
+    weights  = request.args.get('weights').split(',')
+    beginning = request.args.get('beginning')
+    destination = request.args.get('destination')
 
-#     return search.make()
+    H = gera_H(ambient, weights)
+
+    search = AIAestrela(ambient, weights, beginning, destination, H)
+
+    return search.make()[::-1]
 
 
 
