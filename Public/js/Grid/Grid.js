@@ -320,3 +320,63 @@ class OctagonalArena {
     }
   }
 }
+
+// Efeito de clique na opção de terreno
+function selectTerrain(terrainId) {
+  // Remova a classe "selected" de todos os terrenos
+  var terrains = document.querySelectorAll(".optContainer.ground .hexagon");
+  terrains.forEach(function (terrain) {
+    terrain.classList.remove("selected");
+  });
+
+  // Adicione a classe "selected" ao terreno selecionado
+  var selectedTerrainElement = document.querySelector(".optContainer.ground ." + terrainId);
+  selectedTerrainElement.classList.add("selected");
+
+  selectedTerrain = terrainId;
+
+  console.log("Terreno selecionado " + terrainId);
+
+  // Atualize as cores dos grids com base no terreno selecionado
+  updateGridColors(terrainId);
+}
+
+// Adicione um ouvinte de eventos de clique a cada grid
+var grids = document.querySelectorAll(".grid");
+grids.forEach(function (grid) {
+  grid.addEventListener("click", function () {
+    // Verifique se um terreno foi selecionado
+    if (selectedTerrain) {
+      // Atualize as cores dos grids com base no terreno selecionado quando clicado
+      updateGridColors(selectedTerrain);
+    }
+  });
+});
+
+
+
+function updateGridColors(terrainId) {
+  const middleColor = {
+    ground1: "#3e661f",
+    ground2: "#7d5422",
+    ground3: "#b89130",
+  };
+
+  const leftRightColor = middleColor[terrainId];
+
+  const middleElements = document.querySelectorAll(".active .middle");
+  const leftElements = document.querySelectorAll(".active .left");
+  const rightElements = document.querySelectorAll(".active .right");
+
+  middleElements.forEach((element) => {
+    element.style.backgroundColor = middleColor[terrainId];
+  });
+
+  leftElements.forEach((element) => {
+    element.style.borderRightColor = leftRightColor;
+  });
+
+  rightElements.forEach((element) => {
+    element.style.borderLeftColor = leftRightColor;
+  });
+}

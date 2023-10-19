@@ -5,8 +5,8 @@ from Src.Resources.Aprofundamento import Aprofundamento
 from Src.Resources.Bidirecional import Bidirecional
 from Src.Resources.CustoUniforme import CustoUniforme
 from Src.Resources.Greedy import GreedySearch
-from Src.Resources.Aestrela import AStartSeach
-from Src.Resources.AIAestrela import AiaStartSeach
+# from Src.Resources.Aestrela import AStartSeach
+# from Src.Resources.AIAestrela import AiaStartSeach
 
 Router = Blueprint('router', __name__)
 
@@ -95,7 +95,7 @@ def custo_uniforme():
 
     return search.make()
 
-@Router.route("/custo_uniforme")
+@Router.route("/greedy")
 def greedy():
     ambient = request.args.get('ambient').split(',')
     beginning = request.args.get('beginning')
@@ -105,25 +105,25 @@ def greedy():
 
     return search.make()
 
-@Router.route("/custo_uniforme")
-def aStar():
-    ambient = request.args.get('ambient').split(',')
-    beginning = request.args.get('beginning')
-    destination = request.args.get('destination')
+# @Router.route("/aestrela")
+# def aStar():
+#     ambient = request.args.get('ambient').split(',')
+#     beginning = request.args.get('beginning')
+#     destination = request.args.get('destination')
 
-    search = AStartSeach(ambient, beginning, destination)
+#     search = AStartSeach(ambient, beginning, destination)
 
-    return search.make()
+#     return search.make()
 
-@Router.route("/custo_uniforme")
-def aiaStar():
-    ambient = request.args.get('ambient').split(',')
-    beginning = request.args.get('beginning')
-    destination = request.args.get('destination')
+# @Router.route("/aiaestrela")
+# def aiaStar():
+#     ambient = request.args.get('ambient').split(',')
+#     beginning = request.args.get('beginning')
+#     destination = request.args.get('destination')
 
-    search = AiaStartSeach(ambient, beginning, destination)
+#     search = AiaStartSeach(ambient, beginning, destination)
 
-    return search.make()
+#     return search.make()
 
 
 

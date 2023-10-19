@@ -340,18 +340,21 @@ body {
   background-image: url("./../img/ground/grama.jpg");
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   rotate: 90deg;
+  transition: all 0.3s ease-in-out;
 }
 
 .ground2 {
   background-image: url("./../img/ground/lama.jpg");
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   rotate: 90deg;
+  transition: all 0.3s ease-in-out;
 }
 
 .ground3 {
   background-image: url("./../img/ground/areia.jpg");
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   rotate: 90deg;
+  transition: all 0.3s ease-in-out;
 }
 
 /* modal */
@@ -407,13 +410,16 @@ body {
   overflow-y: scroll;
   display: flex;
 }
+
 .modalContainer::-webkit-scrollbar {
   width: 5px;
 }
+
 .modalContainer::-webkit-scrollbar-track {
   background: var(--graydark);
   border-radius: 20px;
 }
+
 .modalContainer::-webkit-scrollbar-thumb {
   background: var(--red);
   border-radius: 20px;
@@ -470,10 +476,7 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
-.modalContainer
-  .radio-button
-  input[type="radio"]:checked
-  ~ .radio-checkmark:before {
+.modalContainer .radio-button input[type="radio"]:checked~.radio-checkmark:before {
   transform: translate(-50%, -50%) scale(1);
 }
 
@@ -495,12 +498,14 @@ body {
   border-radius: 6px;
   background-color: transparent;
 }
+
 .modalContainer .deepLimit:focus {
   background-color: var(--black);
   border: 0 !important;
   color: var(--red);
   outline-color: var(--red);
 }
+
 .modalContainer .deepLimit:focus-visible {
   border: 0 !important;
 }
@@ -527,6 +532,12 @@ body {
 
 .Btn-start:hover {
   background: var(--reddark);
+}
+
+/* MUDANÇA DE COR DOS HEXAGONOS NO MENU */
+.selected {
+  filter: grayscale(80%);
+  scale: 0.9;
 }
 
 /* ANIMAÇÕES */
