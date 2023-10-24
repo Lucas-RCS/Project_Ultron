@@ -129,6 +129,7 @@ body {
 .hex {
   float: left;
   position: absolute;
+  cursor: pointer;
 }
 
 .coord {

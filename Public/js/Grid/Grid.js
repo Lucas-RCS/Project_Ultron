@@ -162,11 +162,19 @@ class OctagonalArena {
 
     this.#card1[1] = `${x}-${y}`;
 
-    if (paths.length != 0)
+    if (paths.length != 0) {
+      const index = this.#ambient.findIndex(
+        (coord) => coord[0] == x && coord[1] == y
+      );
+
+      var weight = this.#weight[index] / 1.5;
+
+      this.#card1[0].style.transitionDuration = weight + "s";
+
       setTimeout(() => {
         this.makePath(paths);
-      }, 1150);
-    else {
+      }, weight * 1000 + 150);
+    } else {
       this.#card2[0].style.opacity = "0";
       setTimeout(() => {
         this.#card2[0].parentNode.removeChild(this.#card2[0]);
