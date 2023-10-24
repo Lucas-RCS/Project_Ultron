@@ -38,7 +38,7 @@ class AIAestrela: # Busca gulosa (o_o)
                     caminho = []
                     caminho = l2.exibeArvore2(atual.estado,atual.valor1)
 
-                    return caminho
+                    return caminho[::-1]
             
                 adjacents = adjacent_coords(atual.estado)
 

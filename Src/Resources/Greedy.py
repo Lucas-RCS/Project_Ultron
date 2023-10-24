@@ -34,7 +34,7 @@ class GreedySearch: # Busca gulosa (o_o)
                 #print("Cópia da árvore:\n",l2.exibeLista())
                 #print("\nÁrvore de busca:\n",l1.exibeLista(),"\n")
 
-                return caminho
+                return caminho[::-1]
             
             adjacents = adjacent_coords(atual.estado)
 

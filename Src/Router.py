@@ -118,7 +118,7 @@ def custo_uniforme():
 
     search = CustoUniforme(ambient, weights, beginning, destination)
 
-    return search.make()[0][::-1]
+    return search.make()
 
 
 
@@ -133,7 +133,7 @@ def greedy():
 
     search = GreedySearch(ambient, weights, beginning, destination, H)
 
-    return search.make()[::-1]
+    return search.make()
 
 @Router.route("/aestrela")
 def aStar():
@@ -146,7 +146,7 @@ def aStar():
 
     search = Aestrela(ambient, weights, beginning, destination, H)
 
-    return search.make()[::-1]
+    return search.make()
 
 @Router.route("/aiaestrela")
 def aiaStar():
@@ -159,7 +159,7 @@ def aiaStar():
 
     search = AIAestrela(ambient, weights, beginning, destination, H)
 
-    return search.make()[::-1]
+    return search.make()
 
 
 
